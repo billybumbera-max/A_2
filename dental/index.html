@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmileDesk — Your AI front desk for dental & medical clinics</title>
+  <meta name="description" content="SmileDesk answers calls and messages, books appointments, fills cancellations, and reminds patients — 24/7. Stop losing patients to voicemail. Book a free setup call." />
+  <meta property="og:title" content="SmileDesk — AI front desk for clinics" />
+  <meta property="og:description" content="Answer every patient, book appointments, and fill your schedule automatically — 24/7." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#08120f" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2308120f'/%3E%3Cpath d='M12 7 V17 M7 12 H17' stroke='%2314b8a6' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    :root { --bg:#08120f; --bg-soft:#0c1814; --card:#11201b; --border:#1e3329; --brand:#14b8a6; --brand-2:#38bdf8; --accent:#5eead4; }
+    .bg-glow { background: radial-gradient(circle, rgba(20,184,166,0.22) 0%, rgba(56,189,248,0.08) 40%, transparent 70%); }
+  </style>
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+  <header class="nav">
+    <a href="#" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6 V18 M6 12 H18"></path><circle cx="12" cy="12" r="9"></circle></svg>
+      </span>
+      SmileDesk
+    </a>
+    <nav class="nav-links">
+      <a href="#problem">Why it matters</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="nav-cta">Book a setup call</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="pill">🦷 For dental &amp; medical clinics</span>
+        <h1>Every patient answered.<br /><span class="grad">Every chair filled.</span></h1>
+        <p class="sub">SmileDesk is your AI front desk. It answers calls and texts, books appointments, fills last-minute cancellations, and reminds patients — <strong>24/7</strong>, so your team stops chasing phones and your schedule stays full.</p>
+        <form id="hero-form" class="hero-form" novalidate>
+          <input type="hidden" name="source" value="hero" />
+          <input type="email" name="email" placeholder="you@yourclinic.com" autocomplete="email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Book a free setup call →</button>
+        </form>
+        <p class="hero-msg" id="hero-msg" role="status" aria-live="polite"></p>
+        <div class="social-proof">
+          <div class="avatars" aria-hidden="true">
+            <span style="background:linear-gradient(135deg,#14b8a6,#38bdf8)"></span>
+            <span style="background:linear-gradient(135deg,#f97316,#fb7185)"></span>
+            <span style="background:linear-gradient(135deg,#22c55e,#06b6d4)"></span>
+          </div>
+          <p>Done-for-you setup in <strong>under a week</strong> — no IT needed</p>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mock">
+          <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="mock-title">SmileDesk · Live</span></div>
+          <div class="mock-body">
+            <div class="mock-row active"><span class="mock-ico" style="background:rgba(20,184,166,.15)">📞</span><div class="mock-text"><strong>Missed call → texted back in 8s</strong><span>“Hi! Want me to book you in?”</span></div><span class="mock-status run"><i></i>Sent</span></div>
+            <div class="mock-row"><span class="mock-ico" style="background:rgba(56,189,248,.15)">📅</span><div class="mock-text"><strong>Booked a cleaning</strong><span>Tue 10:30 · synced to your calendar</span></div><span class="mock-status done">Done</span></div>
+            <div class="mock-row"><span class="mock-ico" style="background:rgba(94,234,212,.15)">⚡</span><div class="mock-text"><strong>Filled a cancellation</strong><span>offered 3pm slot to waitlist</span></div><span class="mock-status done">Done</span></div>
+            <div class="mock-row"><span class="mock-ico" style="background:rgba(34,197,94,.15)">🔔</span><div class="mock-text"><strong>Sent 9 reminders</strong><span>cut no-shows for tomorrow</span></div><span class="mock-status done">Done</span></div>
+          </div>
+          <div class="mock-foot"><span class="live-dot"></span> 18 patients handled today · 0 missed</div>
+        </div>
+      </div>
+    </section>
+    <section class="stats">
+      <div class="stat"><strong>24/7</strong><span>answers after hours &amp; lunch</span></div>
+      <div class="stat"><strong>0</strong><span>calls to voicemail</span></div>
+      <div class="stat"><strong>Fewer</strong><span>no-shows with auto-reminders</span></div>
+      <div class="stat"><strong>&lt;1 wk</strong><span>done-for-you setup</span></div>
+    </section>
+    <section id="problem" class="usecases">
+      <div class="section-head"><h2>A missed call is a lost patient</h2><p>Most callers who hit voicemail just call the next clinic. SmileDesk makes sure that never happens.</p></div>
+      <div class="grid">
+        <article class="card"><div class="card-icon">📞</div><h3>Answer every call &amp; text</h3><p>Picks up when your team can't — after hours, at lunch, mid-procedure — and replies instantly by text.</p><span class="card-outcome">↳ Never miss a new patient</span></article>
+        <article class="card"><div class="card-icon">📅</div><h3>Books appointments</h3><p>Offers real openings and drops the booking straight into your practice calendar.</p><span class="card-outcome">↳ Schedule fills itself</span></article>
+        <article class="card"><div class="card-icon">⚡</div><h3>Fills cancellations</h3><p>A gap opens? It instantly offers the slot to your waitlist so the chair never sits empty.</p><span class="card-outcome">↳ Recover lost revenue</span></article>
+        <article class="card"><div class="card-icon">🔔</div><h3>Cuts no-shows</h3><p>Automatic reminders and easy rescheduling keep your day on track.</p><span class="card-outcome">↳ Fewer empty slots</span></article>
+        <article class="card"><div class="card-icon">💬</div><h3>Answers FAQs</h3><p>Hours, location, insurance, pricing — handled instantly so staff focus on patients in the room.</p><span class="card-outcome">↳ Free up the front desk</span></article>
+        <article class="card"><div class="card-icon">🛟</div><h3>You stay in control</h3><p>Set the rules, approve the tone, and hand off to staff anytime. It escalates urgent cases to a human.</p><span class="card-outcome">↳ AI speed, human care</span></article>
+      </div>
+    </section>
+    <section id="how" class="how">
+      <div class="section-head"><h2>Live in under a week. Done for you.</h2><p>No new software for your team to learn.</p></div>
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><h3>Quick setup call</h3><p>We connect your phone/text, calendar, and booking rules, and learn your clinic's voice.</p></div>
+        <div class="step"><span class="step-num">2</span><h3>We build SmileDesk</h3><p>We script the responses and booking flow; you approve them. Tweaks are free.</p></div>
+        <div class="step"><span class="step-num">3</span><h3>It runs your front desk</h3><p>Calls answered, appointments booked, reminders sent — while your team treats patients.</p></div>
+      </div>
+    </section>
+    <section id="pricing" class="pricing">
+      <div class="section-head"><h2>Pricing</h2><p>One recovered patient a week more than covers it.</p></div>
+      <div class="price-grid">
+        <article class="price-card"><h3>Single Practice</h3><p class="price-desc">For one clinic that refuses to miss a call.</p><div class="price"><span class="amt">€690</span><span class="per">setup</span></div><ul><li>Call &amp; text answering</li><li>Appointment booking</li><li>Auto-reminders</li><li>€199/mo after setup</li></ul><a href="#waitlist" class="btn btn-ghost">Book a call</a></article>
+        <article class="price-card featured"><span class="price-badge">Most popular</span><h3>Full Desk</h3><p class="price-desc">For practices that want the whole front desk handled.</p><div class="price"><span class="amt">€1,800</span><span class="per">setup</span></div><ul><li>Everything in Single Practice</li><li>Cancellation-fill + waitlist</li><li>FAQ handling + calendar sync</li><li>€349/mo after setup</li></ul><a href="#waitlist" class="btn btn-primary">Book a setup call</a></article>
+        <article class="price-card"><h3>Group / DSO</h3><p class="price-desc">For multi-location groups.</p><div class="price"><span class="amt">Custom</span></div><ul><li>Multi-location routing</li><li>Shared reporting</li><li>Team onboarding</li><li>Priority support</li></ul><a href="#waitlist" class="btn btn-ghost">Talk to us</a></article>
+      </div>
+      <p class="price-note">💚 Founding clinics lock in <strong>setup at half price</strong>. Limited spots.</p>
+    </section>
+    <section id="faq" class="faq">
+      <div class="section-head"><h2>Questions, answered</h2><p>Before you book.</p></div>
+      <div class="faq-list">
+        <details><summary>Does it replace my front-desk staff?</summary><p>No — it backs them up. It handles overflow, after-hours, and repetitive calls so your team focuses on patients in the building.</p></details>
+        <details><summary>Will patients know it's AI?</summary><p>It speaks in your clinic's voice and hands off to a human for anything sensitive or urgent. You approve how it sounds first.</p></details>
+        <details><summary>Is patient data handled carefully?</summary><p>Yes. Secure connections, you control what it can access, and urgent/medical matters route to your staff. We set guardrails with you.</p></details>
+        <details><summary>What does it work with?</summary><p>Your phone/text line, calendar, and most practice-management and booking systems. We connect what you use on the setup call.</p></details>
+      </div>
+    </section>
+    <section id="waitlist" class="waitlist">
+      <div class="waitlist-inner">
+        <h2>Stop sending patients to voicemail.</h2>
+        <p>Book a free 20-minute setup call. We'll show you how many calls you're missing — and fill your schedule this month.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="hidden" name="source" value="final-cta" />
+          <div class="form-row"><input type="email" id="email" name="email" placeholder="you@yourclinic.com" autocomplete="email" required aria-label="Email address" /><button type="submit" class="btn btn-primary">Book my free call</button></div>
+          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="waitlist-fine">No obligation. No new software for your team.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6 V18 M6 12 H18"></path><circle cx="12" cy="12" r="9"></circle></svg></span> SmileDesk</div>
+    <p>&copy; <span id="year"></span> SmileDesk. AI front desk for dental &amp; medical clinics.</p>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>

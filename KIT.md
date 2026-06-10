@@ -12,8 +12,13 @@ your own clients.
 
 | File / folder | What it is |
 |---|---|
+| `gallery.html` | **Showcase page** linking all 6 templates — your demo hub. |
 | `index.html` + `styles.css` + `script.js` | **Autohive** — a generic AI-automation landing page with a working waitlist. Your flagship demo. |
-| `realestate/` | **AgentPilot** — a niche landing page (AI lead follow-up for real estate agents). A proven vertical to sell into. |
+| `realestate/` | **AgentPilot** — AI lead follow-up for real estate agents. |
+| `dental/` | **SmileDesk** — AI front desk for dental & medical clinics. |
+| `fitness/` | **RepBot** — AI member growth for gyms & studios. |
+| `restaurant/` | **TableTalk** — AI bookings & messages for restaurants. |
+| `contractor/` | **JobJet** — AI lead response for contractors & home services. |
 | `SERVICE-OFFER.md` | Exactly what you sell, deliverables, pricing tiers, ROI pitch, objection handling. |
 | `OUTREACH.md` | Cold email + DM templates, follow-up sequence, call script, daily routine. |
 | `LEAD-SOURCING.md` | Where and how to build a real prospect list, with EU/GDPR-safe guardrails. |

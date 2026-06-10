@@ -18,6 +18,12 @@ This repo contains the marketing landing page with a waitlist signup.
 > clients). Build your prospect list with **[`LEAD-SOURCING.md`](LEAD-SOURCING.md)**
 > and track it in [`leads-tracker.csv`](leads-tracker.csv).
 
+> **📦 Selling the whole pack?** This repo is a finished product: **6 niche
+> landing pages** ([`gallery.html`](gallery.html) showcases them all) + an
+> agency toolkit. See **[`KIT.md`](KIT.md)** for the overview,
+> **[`GUMROAD-LISTING.md`](GUMROAD-LISTING.md)** for ready-to-paste store copy,
+> and **[`BUILD.md`](BUILD.md)** to produce the sellable zip (`bash package.sh`).
+
 ## Stack
 
 Pure static site — no build step, no dependencies.
