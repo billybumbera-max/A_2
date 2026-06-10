@@ -15,7 +15,8 @@ This repo contains the marketing landing page with a waitlist signup.
 > ready niche landing page (**AgentPilot** — AI lead follow-up for real estate
 > agents). Pair it with **[`SERVICE-OFFER.md`](SERVICE-OFFER.md)** (what you
 > sell + pricing) and **[`OUTREACH.md`](OUTREACH.md)** (templates to book
-> clients).
+> clients). Build your prospect list with **[`LEAD-SOURCING.md`](LEAD-SOURCING.md)**
+> and track it in [`leads-tracker.csv`](leads-tracker.csv).
 
 ## Stack
 
