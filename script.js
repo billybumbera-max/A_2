@@ -1,7 +1,26 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Store signups locally so the demo "works" before a backend is connected.
+// ── Waitlist destination ──────────────────────────────────────────────────
+// Signups post into a Google Form, which collects them in a Google Sheet you
+// own (free, unlimited). Paste two values from your form below — see the
+// README ("Connect the waitlist") for the 2-minute setup. Until both are
+// filled in, the form runs in demo mode (saves signups locally in the browser).
+const WAITLIST = {
+  // The Google Form's submit endpoint. From your form's pre-filled link it
+  // looks like: https://docs.google.com/forms/d/e/XXXX/viewform — swap the
+  // trailing "viewform" for "formResponse".
+  formAction: 'https://docs.google.com/forms/d/e/PASTE_FORM_ID/formResponse',
+  // The email question's field name, e.g. 'entry.1234567890'.
+  emailEntry: 'entry.PASTE_ENTRY_ID',
+};
+
+function waitlistReady() {
+  return !WAITLIST.formAction.includes('PASTE_FORM_ID')
+      && !WAITLIST.emailEntry.includes('PASTE_ENTRY_ID');
+}
+
+// Keep a local backup copy of every signup so nothing is ever lost.
 function saveLocal(email) {
   try {
     const list = JSON.parse(localStorage.getItem('autohive_waitlist') || '[]');
@@ -22,7 +41,6 @@ function initForm(formId, msgId) {
 
   const input = form.querySelector('input[type="email"]');
   const btn = form.querySelector('button[type="submit"]');
-  const formspreeReady = !form.action.includes('YOUR_FORM_ID');
 
   function setMsg(text, type) {
     msg.textContent = text;
@@ -50,8 +68,8 @@ function initForm(formId, msgId) {
       btn.textContent = originalLabel;
     };
 
-    // Demo mode: no Formspree endpoint configured yet.
-    if (!formspreeReady) {
+    // Demo mode: no Google Form connected yet.
+    if (!waitlistReady()) {
       setTimeout(function () {
         finish("🎉 You're on the list! We'll be in touch soon.", 'success');
         form.reset();
@@ -59,18 +77,19 @@ function initForm(formId, msgId) {
       return;
     }
 
+    // Post into the Google Form. It doesn't send CORS headers, so we use
+    // mode:'no-cors' — the response is opaque (we can't read it), but the
+    // submission goes through and lands in your Sheet.
     try {
-      const res = await fetch(form.action, {
+      const body = new URLSearchParams();
+      body.append(WAITLIST.emailEntry, email);
+      await fetch(WAITLIST.formAction, {
         method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
+        mode: 'no-cors',
+        body: body,
       });
-      if (res.ok) {
-        finish("🎉 You're on the list! We'll be in touch soon.", 'success');
-        form.reset();
-      } else {
-        finish('Something went wrong. Please try again.', 'error');
-      }
+      finish("🎉 You're on the list! We'll be in touch soon.", 'success');
+      form.reset();
     } catch (_) {
       finish('Network error. Please try again.', 'error');
     }

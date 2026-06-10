@@ -30,24 +30,40 @@ python3 -m http.server 8000
 3. Source: **Deploy from a branch**, branch: `main`, folder: `/ (root)`.
 4. Your site goes live at `https://<username>.github.io/<repo>/`.
 
-## Connect the waitlist (collect real emails)
+## Connect the waitlist (collect real signups in a Google Sheet)
 
-The form works as a local demo out of the box. To capture real signups:
+The form works as a local demo out of the box. To capture real signups into a
+**Google Sheet you own** (free, unlimited), connect a Google Form. Takes ~2 min:
 
-1. Create a free form at **https://formspree.io** (50 submissions/mo free).
-2. Copy your form ID (looks like `xayzwbpq`).
-3. In `index.html`, replace **both** occurrences of `YOUR_FORM_ID`
-   (the hero form and the final waitlist form):
+1. **Create the form.** Go to <https://forms.new>. Add a single **Short answer**
+   question titled `Email`. (Optional: tick the menu → *Settings* → make it
+   required and set "response validation" to Email.)
+2. **Send responses to a Sheet.** In the form's **Responses** tab, click the
+   green Sheets icon → *Create spreadsheet*. New signups now flow into it.
+3. **Get your two values:**
+   - **Form action URL** — click **Send** → the link (`</>`) tab, or copy your
+     form's view URL. It looks like
+     `https://docs.google.com/forms/d/e/AAAA.../viewform`.
+     Replace the trailing `viewform` with **`formResponse`**.
+   - **Email field name** — open the live form, right-click the email box →
+     *Inspect*, and find the input's `name`, e.g. `entry.1234567890`.
+     (Shortcut: open the form, *Get pre-filled link*, type anything in Email,
+     copy the link — the `entry.XXXX=` in it is your field name.)
+4. **Paste them into `script.js`** at the top, in the `WAITLIST` object:
 
-   ```html
-   action="https://formspree.io/f/YOUR_FORM_ID"
+   ```js
+   const WAITLIST = {
+     formAction: 'https://docs.google.com/forms/d/e/AAAA.../formResponse',
+     emailEntry: 'entry.1234567890',
+   };
    ```
 
-4. Done — submissions now arrive in your Formspree dashboard / email.
+5. Done — every signup now lands in your Google Sheet. Every email is also
+   backed up in the visitor's browser as a safety net.
 
-> Other options: Google Forms, Mailchimp, ConvertKit, or a custom backend.
-> The form posts standard `multipart/form-data` with an `email` field, so it
-> works with most form services by swapping the `action` URL.
+> Prefer another service (Formspree, Mailchimp, ConvertKit, a custom backend)?
+> Just point `WAITLIST.formAction` at its POST URL and set the matching field
+> name.
 
 ## Customize
 
