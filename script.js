@@ -1,3 +1,11 @@
+// ─────────────────────────────────────────────────────────────
+// CONFIG — to collect real signups, paste your form endpoint here.
+// Create a free one at https://formspree.io (or use Getform, Basin,
+// or your own backend). Leave blank to run in local demo mode.
+//   e.g. const WAITLIST_ENDPOINT = 'https://formspree.io/f/xayzwbpq';
+// ─────────────────────────────────────────────────────────────
+const WAITLIST_ENDPOINT = '';
+
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -22,7 +30,11 @@ function initForm(formId, msgId) {
 
   const input = form.querySelector('input[type="email"]');
   const btn = form.querySelector('button[type="submit"]');
-  const formspreeReady = !form.action.includes('YOUR_FORM_ID');
+
+  // A single config value drives both forms. When set, point the form at it.
+  const endpointReady = Boolean(WAITLIST_ENDPOINT);
+  if (endpointReady) form.action = WAITLIST_ENDPOINT;
+  const formspreeReady = endpointReady;
 
   function setMsg(text, type) {
     msg.textContent = text;

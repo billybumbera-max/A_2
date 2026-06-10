@@ -35,15 +35,14 @@ python3 -m http.server 8000
 The form works as a local demo out of the box. To capture real signups:
 
 1. Create a free form at **https://formspree.io** (50 submissions/mo free).
-2. Copy your form ID (looks like `xayzwbpq`).
-3. In `index.html`, replace **both** occurrences of `YOUR_FORM_ID`
-   (the hero form and the final waitlist form):
+2. Copy your endpoint (looks like `https://formspree.io/f/xayzwbpq`).
+3. In `script.js`, set the one config line near the top:
 
-   ```html
-   action="https://formspree.io/f/YOUR_FORM_ID"
+   ```js
+   const WAITLIST_ENDPOINT = 'https://formspree.io/f/xayzwbpq';
    ```
 
-4. Done — submissions now arrive in your Formspree dashboard / email.
+4. Done — both forms now post there and submissions arrive in your dashboard / email.
 
 > Other options: Google Forms, Mailchimp, ConvertKit, or a custom backend.
 > The form posts standard `multipart/form-data` with an `email` field, so it
