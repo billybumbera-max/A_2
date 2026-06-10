@@ -36,10 +36,11 @@ The form works as a local demo out of the box. To capture real signups:
 
 1. Create a free form at **https://formspree.io** (50 submissions/mo free).
 2. Copy your form ID (looks like `xayzwbpq`).
-3. In `index.html`, find the form and replace `YOUR_FORM_ID`:
+3. In `index.html`, replace **both** occurrences of `YOUR_FORM_ID`
+   (the hero form and the final waitlist form):
 
    ```html
-   <form id="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   action="https://formspree.io/f/YOUR_FORM_ID"
    ```
 
 4. Done — submissions now arrive in your Formspree dashboard / email.

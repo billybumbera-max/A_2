@@ -1,31 +1,32 @@
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Waitlist form handling
-(function () {
-  const form = document.getElementById('waitlist-form');
-  const input = document.getElementById('email');
-  const msg = document.getElementById('form-msg');
-  if (!form) return;
+// Store signups locally so the demo "works" before a backend is connected.
+function saveLocal(email) {
+  try {
+    const list = JSON.parse(localStorage.getItem('autohive_waitlist') || '[]');
+    if (!list.includes(email)) list.push(email);
+    localStorage.setItem('autohive_waitlist', JSON.stringify(list));
+  } catch (_) { /* ignore storage errors */ }
+}
 
-  const FORMSPREE_CONFIGURED = !form.action.includes('YOUR_FORM_ID');
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+// Wire up any waitlist form on the page (hero + final CTA).
+function initForm(formId, msgId) {
+  const form = document.getElementById(formId);
+  const msg = document.getElementById(msgId);
+  if (!form || !msg) return;
+
+  const input = form.querySelector('input[type="email"]');
+  const btn = form.querySelector('button[type="submit"]');
+  const formspreeReady = !form.action.includes('YOUR_FORM_ID');
 
   function setMsg(text, type) {
     msg.textContent = text;
-    msg.className = 'form-msg' + (type ? ' ' + type : '');
-  }
-
-  function isValidEmail(value) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  }
-
-  // Store locally so the demo "works" before a backend is connected.
-  function saveLocal(email) {
-    try {
-      const list = JSON.parse(localStorage.getItem('autohive_waitlist') || '[]');
-      if (!list.includes(email)) list.push(email);
-      localStorage.setItem('autohive_waitlist', JSON.stringify(list));
-    } catch (_) { /* ignore storage errors */ }
+    msg.className = msg.className.replace(/\b(success|error)\b/g, '').trim() + (type ? ' ' + type : '');
   }
 
   form.addEventListener('submit', async function (e) {
@@ -38,20 +39,22 @@ document.getElementById('year').textContent = new Date().getFullYear();
       return;
     }
 
-    const btn = form.querySelector('button[type="submit"]');
     const originalLabel = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Joining…';
-
     saveLocal(email);
 
-    // If Formspree isn't set up yet, succeed locally for the demo.
-    if (!FORMSPREE_CONFIGURED) {
+    const finish = function (text, type) {
+      setMsg(text, type);
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    };
+
+    // Demo mode: no Formspree endpoint configured yet.
+    if (!formspreeReady) {
       setTimeout(function () {
-        setMsg("🎉 You're on the list! We'll be in touch soon.", 'success');
+        finish("🎉 You're on the list! We'll be in touch soon.", 'success');
         form.reset();
-        btn.disabled = false;
-        btn.textContent = originalLabel;
       }, 500);
       return;
     }
@@ -63,16 +66,16 @@ document.getElementById('year').textContent = new Date().getFullYear();
         headers: { Accept: 'application/json' },
       });
       if (res.ok) {
-        setMsg("🎉 You're on the list! We'll be in touch soon.", 'success');
+        finish("🎉 You're on the list! We'll be in touch soon.", 'success');
         form.reset();
       } else {
-        setMsg('Something went wrong. Please try again.', 'error');
+        finish('Something went wrong. Please try again.', 'error');
       }
     } catch (_) {
-      setMsg('Network error. Please try again.', 'error');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = originalLabel;
+      finish('Network error. Please try again.', 'error');
     }
   });
-})();
+}
+
+initForm('hero-form', 'hero-msg');
+initForm('waitlist-form', 'form-msg');
