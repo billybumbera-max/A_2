@@ -1,18 +1,13 @@
-# Autohive — Landing Page
+# Stride — Running Club Website
 
-**Autohive** is an AI automation service: deploy AI agents that handle repetitive
-busywork (inbox triage, data entry, reporting, follow-ups) so teams can focus on
-higher-value work.
-
-This repo contains the marketing landing page with a waitlist signup.
+**Stride** is a running community & coaching club landing page — group runs,
+personalized training plans, progress tracking, and a built-in **pace calculator**.
 
 ## Stack
 
-Pure static site — no build step, no dependencies.
+Single self-contained file. No build step, no dependencies, no framework.
 
-- `index.html` — page structure & content
-- `styles.css` — styling (dark, modern SaaS theme, fully responsive)
-- `script.js` — waitlist form handling & validation
+- `index.html` — the entire site (HTML + CSS + JS inline)
 
 ## Run locally
 
@@ -23,33 +18,26 @@ python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-## Deploy (free) with GitHub Pages
+## Features
 
-1. Push this branch and merge to `main`.
-2. In the repo: **Settings → Pages → Build and deployment**.
-3. Source: **Deploy from a branch**, branch: `main`, folder: `/ (root)`.
-4. Your site goes live at `https://<username>.github.io/<repo>/`.
+- Responsive dark theme with an energetic sunrise (orange/amber) palette
+- Sticky nav with working mobile menu
+- Animated hero card (live group-run mock)
+- **Pace calculator** — enter distance + goal time, get pace per mile *and* per km
+- "Join the club" email form (saves locally in demo mode)
 
-## Connect the waitlist (collect real emails)
+## Make the join form collect real emails
 
-The form works as a local demo out of the box. To capture real signups:
+The form runs in local demo mode out of the box. To capture real signups, swap
+the demo handler near the bottom of `index.html` to POST to a form service
+(e.g. [Formspree](https://formspree.io), Getform, or your own backend).
 
-1. Create a free form at **https://formspree.io** (50 submissions/mo free).
-2. Copy your endpoint (looks like `https://formspree.io/f/xayzwbpq`).
-3. In `script.js`, set the one config line near the top:
+## Deploy (free, no GitHub needed)
 
-   ```js
-   const WAITLIST_ENDPOINT = 'https://formspree.io/f/xayzwbpq';
-   ```
+Drag this folder onto **[Netlify Drop](https://app.netlify.com/drop)** or
+**Cloudflare Pages** for an instant public URL.
 
-4. Done — both forms now post there and submissions arrive in your dashboard / email.
+---
 
-> Other options: Google Forms, Mailchimp, ConvertKit, or a custom backend.
-> The form posts standard `multipart/form-data` with an `email` field, so it
-> works with most form services by swapping the `action` URL.
-
-## Customize
-
-- **Name / copy:** edit text in `index.html`.
-- **Colors:** tweak the CSS variables at the top of `styles.css` (`--brand`, `--brand-2`).
-- **Integrations shown:** update the `.trust-logos` list in `index.html`.
+> The earlier **Autohive** landing page now lives in `autohive/` (open
+> `autohive/index.html`), and `SELLING.md` is the sell-kit for it.

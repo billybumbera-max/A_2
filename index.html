@@ -3,346 +3,474 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Autohive — AI agents that automate your busywork</title>
-  <meta name="description" content="Autohive deploys AI agents that run your repetitive work end-to-end — inbox triage, data entry, reporting, follow-ups. Save 10+ hours a week. Join the waitlist for early-access pricing." />
+  <title>Stride — Run further, together</title>
+  <meta name="description" content="Stride is a running community and coaching club. Group runs, personalized training plans, and a free pace calculator. Lace up and join us." />
 
-  <!-- Open Graph / social sharing -->
-  <meta property="og:title" content="Autohive — Put your busywork on autopilot" />
-  <meta property="og:description" content="AI agents that run your repetitive work end-to-end. Save 10+ hours a week. Join the waitlist." />
+  <meta property="og:title" content="Stride — Run further, together" />
+  <meta property="og:description" content="A running community with group runs, training plans, and coaching. Lace up and join us." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://og.tailgraph.com/og?title=Autohive&taglineColor=%23b9c2dd&bgColor=%230a0b14&titleColor=%23ffffff&titleFontSize=120&text=AI%20agents%20that%20automate%20your%20busywork" />
-
-  <!-- Twitter card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Autohive — Put your busywork on autopilot" />
-  <meta name="twitter:description" content="AI agents that run your repetitive work end-to-end. Save 10+ hours a week." />
-
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0a0b14" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%2321d4fd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='%230a0b14'/%3E%3Cg fill='none' stroke='url(%23g)' stroke-width='2' stroke-linejoin='round'%3E%3Cpolygon points='12 3 19 7 19 17 12 21 5 17 5 7 12 3'/%3E%3Ccircle cx='12' cy='12' r='2.5'/%3E%3C/g%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#0f1116" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%230f1116'/%3E%3Cpath d='M7 17l3-3 2 2 5-6' fill='none' stroke='%23ff6b35' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0f1116;
+      --bg-2: #15181f;
+      --card: #181b23;
+      --text: #f4f6fb;
+      --muted: #a3acbd;
+      --line: rgba(255,255,255,.08);
+      --brand: #ff6b35;
+      --brand-2: #ffb03a;
+      --ok: #34d399;
+      --radius: 16px;
+      --maxw: 1120px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, .brand { font-family: 'Sora', sans-serif; letter-spacing: -.02em; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    .grad { background: linear-gradient(120deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* ambient glow */
+    .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(600px 400px at 80% -5%, rgba(255,107,53,.18), transparent 60%),
+        radial-gradient(700px 500px at 0% 10%, rgba(255,176,58,.10), transparent 60%); }
+
+    /* nav */
+    .nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px);
+      background: rgba(15,17,22,.72); border-bottom: 1px solid var(--line); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; }
+    .brand .mark { width: 32px; height: 32px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-radius: 9px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { color: var(--muted); font-weight: 500; font-size: .95rem; transition: color .15s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; border: none; cursor: pointer;
+      font-family: 'Sora', sans-serif; font-weight: 600; font-size: .95rem; border-radius: 999px;
+      padding: 11px 22px; transition: transform .12s, box-shadow .2s, background .2s; }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #1a0f07;
+      box-shadow: 0 8px 24px rgba(255,107,53,.28); }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(255,107,53,.4); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.25); }
+    .nav-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; }
+
+    /* hero */
+    .hero { padding: 84px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 600;
+      color: var(--brand-2); background: rgba(255,176,58,.1); border: 1px solid rgba(255,176,58,.22);
+      padding: 6px 14px; border-radius: 999px; margin-bottom: 22px; }
+    .hero h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.04; font-weight: 800; }
+    .hero p.sub { color: var(--muted); font-size: 1.16rem; margin: 20px 0 30px; max-width: 30em; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-meta { display: flex; gap: 26px; margin-top: 34px; flex-wrap: wrap; }
+    .hero-meta div { display: flex; flex-direction: column; }
+    .hero-meta strong { font-family: 'Sora'; font-size: 1.5rem; }
+    .hero-meta span { color: var(--muted); font-size: .86rem; }
+
+    /* hero visual — animated runner card */
+    .hero-card { background: linear-gradient(180deg, var(--card), var(--bg-2));
+      border: 1px solid var(--line); border-radius: 22px; padding: 24px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+    .hc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .hc-top .who { display: flex; align-items: center; gap: 11px; }
+    .hc-top .ava { width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: grid; place-items: center; font-size: 1.3rem; }
+    .hc-top .who b { font-family: 'Sora'; }
+    .hc-top .who span { display: block; color: var(--muted); font-size: .8rem; }
+    .live { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; color: var(--ok); }
+    .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); animation: pulse 1.6s infinite; }
+    @keyframes pulse { 0%,100%{ opacity: 1; transform: scale(1);} 50%{ opacity: .4; transform: scale(.7);} }
+    .hc-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
+    .hc-stats div { background: rgba(255,255,255,.03); border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+    .hc-stats strong { font-family: 'Sora'; font-size: 1.25rem; display: block; }
+    .hc-stats span { color: var(--muted); font-size: .74rem; }
+    .hc-track { height: 64px; border-radius: 12px; background: rgba(255,255,255,.03);
+      border: 1px solid var(--line); position: relative; overflow: hidden; }
+    .hc-track svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .runner { position: absolute; top: 50%; font-size: 1.5rem; animation: run 5s linear infinite; }
+    @keyframes run { from { left: -6%; } to { left: 102%; } }
+
+    /* sections */
+    section { padding: 72px 0; }
+    .head { text-align: center; max-width: 38em; margin: 0 auto 48px; }
+    .head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+    .head p { color: var(--muted); font-size: 1.08rem; margin-top: 12px; }
+
+    .features { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 28px; transition: transform .18s, border-color .18s; }
+    .card:hover { transform: translateY(-4px); border-color: rgba(255,107,53,.4); }
+    .card .ico { width: 50px; height: 50px; border-radius: 13px; display: grid; place-items: center;
+      font-size: 1.5rem; background: rgba(255,107,53,.12); margin-bottom: 16px; }
+    .card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: .96rem; }
+
+    /* pace calculator */
+    .calc-wrap { background: linear-gradient(180deg, var(--bg-2), var(--bg)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .calc { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .calc-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: .86rem; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
+    .field-row { display: flex; gap: 10px; }
+    .field input, .field select { width: 100%; background: var(--bg); border: 1px solid var(--line);
+      color: var(--text); border-radius: 11px; padding: 13px 14px; font-size: 1rem; font-family: inherit; }
+    .field input:focus, .field select:focus { outline: none; border-color: var(--brand); }
+    .calc-out { margin-top: 22px; padding: 22px; border-radius: 14px; text-align: center;
+      background: linear-gradient(135deg, rgba(255,107,53,.14), rgba(255,176,58,.08)); border: 1px solid rgba(255,107,53,.28); }
+    .calc-out span { color: var(--muted); font-size: .85rem; }
+    .calc-out strong { font-family: 'Sora'; font-size: 2.4rem; display: block; line-height: 1.1; }
+    .calc-out small { color: var(--muted); }
+
+    /* testimonials */
+    .quotes { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .quote { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; }
+    .quote p { font-size: 1rem; margin-bottom: 18px; }
+    .quote .by { display: flex; align-items: center; gap: 11px; }
+    .quote .by .ava { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; color: #1a0f07; }
+    .quote .by b { font-family: 'Sora'; font-size: .92rem; }
+    .quote .by span { display: block; color: var(--muted); font-size: .8rem; }
+    .stars { color: var(--brand-2); margin-bottom: 12px; letter-spacing: 2px; }
+
+    /* join CTA */
+    .join { text-align: center; }
+    .join-inner { background: linear-gradient(135deg, rgba(255,107,53,.16), rgba(255,176,58,.08));
+      border: 1px solid rgba(255,107,53,.28); border-radius: 24px; padding: 56px 28px; }
+    .join h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+    .join p { color: var(--muted); font-size: 1.1rem; margin: 14px auto 28px; max-width: 32em; }
+    .join-form { display: flex; gap: 12px; justify-content: center; max-width: 460px; margin: 0 auto; flex-wrap: wrap; }
+    .join-form input { flex: 1; min-width: 220px; background: var(--bg); border: 1px solid var(--line);
+      color: var(--text); border-radius: 999px; padding: 14px 20px; font-size: 1rem; font-family: inherit; }
+    .join-form input:focus { outline: none; border-color: var(--brand); }
+    .join-msg { margin-top: 16px; font-weight: 600; min-height: 1.4em; }
+    .join-msg.ok { color: var(--ok); }
+    .join-msg.err { color: #f87171; }
+    .fine { color: var(--muted); font-size: .82rem; margin-top: 14px; }
+
+    /* footer */
+    footer { border-top: 1px solid var(--line); padding: 36px 0; }
+    footer .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    footer .muted { color: var(--muted); font-size: .88rem; }
+
+    @media (max-width: 860px) {
+      .hero-grid, .calc { grid-template-columns: 1fr; }
+      .hero-card { order: -1; }
+      .features, .quotes { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.open { display: flex; position: absolute; top: 66px; left: 0; right: 0; flex-direction: column;
+        background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 18px 24px; gap: 18px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="bg-glow" aria-hidden="true"></div>
+  <div class="glow" aria-hidden="true"></div>
 
   <!-- Nav -->
   <header class="nav">
-    <a href="#" class="brand">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-      </span>
-      Autohive
-    </a>
-    <nav class="nav-links">
-      <a href="#usecases">Use cases</a>
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#waitlist" class="nav-cta">Join waitlist</a>
-    </nav>
+    <div class="wrap">
+      <a href="#" class="brand">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1a0f07" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l3-3 2 2 5-6"/></svg>
+        </span>
+        Stride
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#features">Why Stride</a>
+        <a href="#calculator">Pace calculator</a>
+        <a href="#voices">Runners</a>
+        <a href="#join" class="btn btn-primary">Join the club</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
   </header>
 
   <main>
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-copy">
-        <span class="pill">⚡ Early access open — limited spots</span>
-        <h1>Your team's busywork,<br /><span class="grad">done by AI agents.</span></h1>
-        <p class="sub">
-          Autohive deploys AI agents that run your repetitive work end-to-end —
-          inbox triage, data entry, reporting, follow-ups. Set it up in an afternoon
-          and win back <strong>10+ hours a week</strong>.
-        </p>
-        <form id="hero-form" class="hero-form" action="#" method="POST" novalidate>
-          <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address" />
-          <button type="submit" class="btn btn-primary">Get early access →</button>
-        </form>
-        <p class="hero-msg" id="hero-msg" role="status" aria-live="polite"></p>
-        <div class="social-proof">
-          <div class="avatars" aria-hidden="true">
-            <span style="background:linear-gradient(135deg,#7c5cff,#21d4fd)"></span>
-            <span style="background:linear-gradient(135deg,#f97316,#fb7185)"></span>
-            <span style="background:linear-gradient(135deg,#22c55e,#06b6d4)"></span>
-            <span style="background:linear-gradient(135deg,#a855f7,#ec4899)"></span>
+      <div class="wrap hero-grid">
+        <div>
+          <span class="pill">🏃 New training block starts Monday</span>
+          <h1>Run further.<br /><span class="grad">Together.</span></h1>
+          <p class="sub">
+            Stride is a running club and coaching community. Join weekly group runs,
+            follow a plan built around your goal, and finally enjoy the miles —
+            whether it's your first 5K or your next marathon PR.
+          </p>
+          <div class="hero-cta">
+            <a href="#join" class="btn btn-primary">Join the club — free →</a>
+            <a href="#calculator" class="btn btn-ghost">Try the pace calculator</a>
           </div>
-          <p>Join the <strong>founding cohort</strong> — early access opening soon</p>
+          <div class="hero-meta">
+            <div><strong>12,400+</strong><span>runners strong</span></div>
+            <div><strong>3.2M</strong><span>miles logged</span></div>
+            <div><strong>48</strong><span>cities, weekly runs</span></div>
+          </div>
         </div>
-      </div>
 
-      <!-- Product mockup -->
-      <div class="hero-visual" aria-hidden="true">
-        <div class="mock">
-          <div class="mock-bar">
-            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-            <span class="mock-title">Autohive · Live</span>
-          </div>
-          <div class="mock-body">
-            <div class="mock-row">
-              <span class="mock-ico" style="background:rgba(124,92,255,.15)">📨</span>
-              <div class="mock-text"><strong>Triaged 38 support emails</strong><span>routed · drafted replies</span></div>
-              <span class="mock-status done">Done</span>
+        <!-- Animated runner card -->
+        <div class="hero-card" aria-hidden="true">
+          <div class="hc-top">
+            <div class="who">
+              <span class="ava">🏃</span>
+              <div><b>Morning Run Club</b><span>Tuesday · 6:30 AM</span></div>
             </div>
-            <div class="mock-row">
-              <span class="mock-ico" style="background:rgba(33,212,253,.15)">📊</span>
-              <div class="mock-text"><strong>Built weekly sales report</strong><span>from Sheets + CRM</span></div>
-              <span class="mock-status done">Done</span>
-            </div>
-            <div class="mock-row active">
-              <span class="mock-ico" style="background:rgba(168,85,247,.15)">🔁</span>
-              <div class="mock-text"><strong>Sending 12 follow-ups</strong><span>working now…</span></div>
-              <span class="mock-status run"><i></i>Running</span>
-            </div>
-            <div class="mock-row">
-              <span class="mock-ico" style="background:rgba(34,197,94,.15)">🗂️</span>
-              <div class="mock-text"><strong>Updated 204 CRM records</strong><span>deduped · enriched</span></div>
-              <span class="mock-status done">Done</span>
-            </div>
+            <span class="live"><i></i> Live</span>
           </div>
-          <div class="mock-foot">
-            <span class="live-dot"></span> 4 agents active · 9.4 hrs saved today
+          <div class="hc-stats">
+            <div><strong>5.2</strong><span>miles</span></div>
+            <div><strong>8:14</strong><span>avg pace</span></div>
+            <div><strong>42</strong><span>running now</span></div>
+          </div>
+          <div class="hc-track">
+            <svg viewBox="0 0 400 64" preserveAspectRatio="none">
+              <path d="M0 50 L60 50 L90 30 L140 30 L170 46 L230 46 L260 22 L320 22 L350 40 L400 40" fill="none" stroke="rgba(255,107,53,.5)" stroke-width="2"/>
+            </svg>
+            <span class="runner">🏃</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Capability band -->
-    <section class="stats">
-      <div class="stat"><strong>24/7</strong><span>agents that never clock out</span></div>
-      <div class="stat"><strong>No code</strong><span>set up in plain English</span></div>
-      <div class="stat"><strong>Minutes</strong><span>from idea to running agent</span></div>
-      <div class="stat"><strong>You're in control</strong><span>guardrails &amp; approvals</span></div>
-    </section>
-
-    <!-- Trust strip -->
-    <section class="trust">
-      <p>Works with the tools your team already runs on</p>
-      <div class="trust-logos">
-        <span>Gmail</span><span>Slack</span><span>Notion</span><span>Salesforce</span><span>Sheets</span><span>HubSpot</span><span>Zapier</span>
-      </div>
-    </section>
-
-    <!-- Use cases -->
-    <section id="usecases" class="usecases">
-      <div class="section-head">
-        <h2>What you'll never do manually again</h2>
-        <p>Point Autohive at the work that drains your week. It handles the rest.</p>
-      </div>
-      <div class="grid">
-        <article class="card">
-          <div class="card-icon">📨</div>
-          <h3>Inbox &amp; ticket triage</h3>
-          <p>Agents read, categorize, draft replies, and route requests to the right person — around the clock.</p>
-          <span class="card-outcome">↳ Save ~6 hrs/week</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">📊</div>
-          <h3>Reporting on autopilot</h3>
-          <p>Pull from your spreadsheets and tools, then generate clean summaries and dashboards on schedule.</p>
-          <span class="card-outcome">↳ Reports in seconds</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">🗂️</div>
-          <h3>Data entry &amp; cleanup</h3>
-          <p>Dedupe, enrich, and sync records across your CRM and databases. No more copy-paste.</p>
-          <span class="card-outcome">↳ 99% fewer errors</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">🔁</div>
-          <h3>Follow-ups that never slip</h3>
-          <p>Automatically chase leads, invoices, and replies with context-aware messages.</p>
-          <span class="card-outcome">↳ Nothing falls through</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">🧠</div>
-          <h3>Research &amp; summaries</h3>
-          <p>Monitor sources, gather what matters, and deliver briefings straight to your inbox or Slack.</p>
-          <span class="card-outcome">↳ Stay ahead, effortlessly</span>
-        </article>
-        <article class="card">
-          <div class="card-icon">⚙️</div>
-          <h3>Your custom workflow</h3>
-          <p>Describe any repetitive process in plain English. Autohive builds and runs the agent for you.</p>
-          <span class="card-outcome">↳ Built in minutes</span>
-        </article>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section id="how" class="how">
-      <div class="section-head">
-        <h2>Up and running in an afternoon</h2>
-        <p>No engineers, no glue code, no maintenance.</p>
-      </div>
-      <div class="steps">
-        <div class="step">
-          <span class="step-num">1</span>
-          <h3>Connect your tools</h3>
-          <p>Link your email, docs, and apps in a few clicks. Secure OAuth — we never store passwords.</p>
+    <!-- Features -->
+    <section id="features">
+      <div class="wrap">
+        <div class="head">
+          <h2>Everything you need to keep going</h2>
+          <p>Structure, community, and accountability — the three things that actually make running stick.</p>
         </div>
-        <div class="step">
-          <span class="step-num">2</span>
-          <h3>Describe the task</h3>
-          <p>Tell Autohive what you want done in plain English. It builds the workflow for you.</p>
-        </div>
-        <div class="step">
-          <span class="step-num">3</span>
-          <h3>Let the hive run</h3>
-          <p>Agents work in the background with your guardrails. Review, approve, watch busywork vanish.</p>
+        <div class="features">
+          <article class="card">
+            <div class="ico">📋</div>
+            <h3>Personalized plans</h3>
+            <p>Tell us your goal and your week. Stride builds a training plan that adapts as you get fitter — no guesswork.</p>
+          </article>
+          <article class="card">
+            <div class="ico">👟</div>
+            <h3>Weekly group runs</h3>
+            <p>Find your pace group in 48 cities. Easy social miles or hard track sessions — show up, we'll handle the route.</p>
+          </article>
+          <article class="card">
+            <div class="ico">📈</div>
+            <h3>Progress tracking</h3>
+            <p>Log runs, watch your pace drop, and hit milestones. Sync from your watch or add runs by hand.</p>
+          </article>
+          <article class="card">
+            <div class="ico">🏅</div>
+            <h3>Coaching that cares</h3>
+            <p>Certified coaches review your training and answer questions. Real humans, not a generic PDF.</p>
+          </article>
+          <article class="card">
+            <div class="ico">🤝</div>
+            <h3>A crew that shows up</h3>
+            <p>Accountability partners, challenges, and a community that celebrates every PR — big or small.</p>
+          </article>
+          <article class="card">
+            <div class="ico">🎯</div>
+            <h3>Race ready</h3>
+            <p>From couch-to-5K to Boston qualifiers, we'll taper, fuel, and pace you straight to the start line.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- The old way vs Autohive -->
-    <section class="compare">
-      <div class="section-head">
-        <h2>There's a better way to work</h2>
-        <p>Stop trading your hours for tasks a machine should handle.</p>
-      </div>
-      <div class="compare-grid">
-        <div class="compare-col old">
-          <h3>The manual way</h3>
-          <ul>
-            <li>Hours lost to repetitive copy-paste</li>
-            <li>Reports built by hand, late on Friday</li>
-            <li>Follow-ups forgotten, leads gone cold</li>
-            <li>Work stops the moment you log off</li>
-            <li>Hiring just to keep up with volume</li>
-          </ul>
-        </div>
-        <div class="compare-col new">
-          <h3><span class="brand-mark sm" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon><circle cx="12" cy="12" r="3"></circle></svg></span> With Autohive</h3>
-          <ul>
-            <li>Agents handle the busywork end-to-end</li>
-            <li>Reports delivered on schedule, automatically</li>
-            <li>Every follow-up sent, with context</li>
-            <li>Work continues around the clock</li>
-            <li>Scale output without scaling headcount</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing teaser -->
-    <section id="pricing" class="pricing">
-      <div class="section-head">
-        <h2>Early-access pricing</h2>
-        <p>Join the waitlist now and lock in founding-member rates for life.</p>
-      </div>
-      <div class="price-grid">
-        <article class="price-card">
-          <h3>Starter</h3>
-          <p class="price-desc">For individuals automating their own work.</p>
-          <div class="price"><span class="amt">$29</span><span class="per">/mo</span></div>
-          <ul>
-            <li>1 active agent</li>
-            <li>Core integrations</li>
-            <li>Up to 500 tasks/mo</li>
-            <li>Email support</li>
-          </ul>
-          <a href="#waitlist" class="btn btn-ghost">Join waitlist</a>
-        </article>
-        <article class="price-card featured">
-          <span class="price-badge">Most popular</span>
-          <h3>Team</h3>
-          <p class="price-desc">For teams putting whole workflows on autopilot.</p>
-          <div class="price"><span class="amt">$99</span><span class="per">/mo</span></div>
-          <ul>
-            <li>Up to 10 active agents</li>
-            <li>All integrations</li>
-            <li>Up to 10,000 tasks/mo</li>
-            <li>Approval workflows &amp; guardrails</li>
-            <li>Priority support</li>
-          </ul>
-          <a href="#waitlist" class="btn btn-primary">Get early access</a>
-        </article>
-        <article class="price-card">
-          <h3>Enterprise</h3>
-          <p class="price-desc">For organizations scaling a hive of agents.</p>
-          <div class="price"><span class="amt">Custom</span></div>
-          <ul>
-            <li>Unlimited agents</li>
-            <li>SSO &amp; advanced security</li>
-            <li>Dedicated onboarding</li>
-            <li>SLA &amp; account manager</li>
-          </ul>
-          <a href="#waitlist" class="btn btn-ghost">Talk to us</a>
-        </article>
-      </div>
-      <p class="price-note">💛 Waitlist members get <strong>50% off for the first year</strong>. Final pricing confirmed before launch.</p>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="faq">
-      <div class="section-head">
-        <h2>Questions, answered</h2>
-        <p>Everything you might be wondering before you join.</p>
-      </div>
-      <div class="faq-list">
-        <details>
-          <summary>What does Autohive actually do?</summary>
-          <p>Autohive runs AI agents that take over repetitive work — triaging your inbox, entering data, generating reports, sending follow-ups — by understanding context and acting across the tools you already use.</p>
-        </details>
-        <details>
-          <summary>Do I need to be technical to use it?</summary>
-          <p>No. You connect your tools with a few clicks and describe what you want done in plain English. Autohive builds and runs the workflow for you.</p>
-        </details>
-        <details>
-          <summary>Is my data secure?</summary>
-          <p>Yes. We connect via secure OAuth and never store your passwords. You set guardrails and approval steps, so a human stays in control of anything sensitive.</p>
-        </details>
-        <details>
-          <summary>What does it cost?</summary>
-          <p>Plans start at $29/mo, and waitlist members lock in 50% off their first year. See the pricing section above for details.</p>
-        </details>
-        <details>
-          <summary>When does it launch?</summary>
-          <p>We're onboarding early-access teams now. Join the waitlist and we'll reach out as spots open up.</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- Final CTA / Waitlist -->
-    <section id="waitlist" class="waitlist">
-      <div class="waitlist-inner">
-        <h2>Win back your week.</h2>
-        <p>Join the waitlist for early access and founding-member pricing. Takes 10 seconds.</p>
-        <!--
-          To collect real emails: set WAITLIST_ENDPOINT at the top of script.js
-          (one line). Until then, submissions are saved locally in the browser
-          for demo purposes.
-        -->
-        <form id="waitlist-form" action="#" method="POST" novalidate>
-          <div class="form-row">
-            <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address" />
-            <button type="submit" class="btn btn-primary">Get early access</button>
+    <!-- Pace calculator -->
+    <div class="calc-wrap">
+      <section id="calculator">
+        <div class="wrap calc">
+          <div>
+            <div class="head" style="text-align:left;margin:0 0 18px;">
+              <h2>Free pace calculator</h2>
+              <p>Enter a distance and a goal time to see the pace you need to hold. Great for planning your next race.</p>
+            </div>
+            <ul style="color:var(--muted);list-style:none;display:grid;gap:10px;">
+              <li>✓ Works for any distance — 5K, 10K, half, marathon, or custom</li>
+              <li>✓ Get pace per mile <em>and</em> per kilometer instantly</li>
+              <li>✓ No sign-up, no app — runs right here</li>
+            </ul>
           </div>
-          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
-        </form>
-        <p class="waitlist-fine">No credit card. No spam — just a heads up when it's your turn.</p>
+          <div class="calc-card">
+            <div class="field">
+              <label for="dist">Distance</label>
+              <div class="field-row">
+                <input type="number" id="dist" value="13.1" min="0.1" step="0.1" inputmode="decimal" />
+                <select id="unit" aria-label="Distance unit">
+                  <option value="mi">miles</option>
+                  <option value="km">km</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Goal time (hh : mm : ss)</label>
+              <div class="field-row">
+                <input type="number" id="hh" value="2" min="0" placeholder="hh" aria-label="hours" />
+                <input type="number" id="mm" value="0" min="0" max="59" placeholder="mm" aria-label="minutes" />
+                <input type="number" id="ss" value="0" min="0" max="59" placeholder="ss" aria-label="seconds" />
+              </div>
+            </div>
+            <div class="calc-out">
+              <span>Required pace</span>
+              <strong id="pace-mi">—</strong>
+              <small id="pace-km">per mile · — per km</small>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Testimonials -->
+    <section id="voices">
+      <div class="wrap">
+        <div class="head">
+          <h2>Loved by runners of every pace</h2>
+          <p>From first-timers to podium chasers — Stride meets you where you are.</p>
+        </div>
+        <div class="quotes">
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>"I went from never running to finishing my first half marathon in 5 months. The Tuesday crew is the reason I kept showing up."</p>
+            <div class="by">
+              <span class="ava" style="background:linear-gradient(135deg,#ff6b35,#ffb03a)">M</span>
+              <div><b>Maya R.</b><span>First half marathon</span></div>
+            </div>
+          </article>
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>"The adaptive plan cut my marathon time by 14 minutes. It actually backed off when I was tired instead of grinding me down."</p>
+            <div class="by">
+              <span class="ava" style="background:linear-gradient(135deg,#34d399,#06b6d4)">D</span>
+              <div><b>Devon K.</b><span>Marathon PR: 3:08</span></div>
+            </div>
+          </article>
+          <article class="quote">
+            <div class="stars">★★★★★</div>
+            <p>"I moved to a new city and the group runs gave me an instant community. Now my best friends are people I met at 6:30 AM."</p>
+            <div class="by">
+              <span class="ava" style="background:linear-gradient(135deg,#a855f7,#ec4899)">P</span>
+              <div><b>Priya S.</b><span>Weekly group runner</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join CTA -->
+    <section id="join" class="join">
+      <div class="wrap">
+        <div class="join-inner">
+          <h2>Your next run starts here.</h2>
+          <p>Join free, find your pace group, and get a plan built around your goal. Lace up — the crew's waiting.</p>
+          <form id="join-form" novalidate>
+            <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required aria-label="Email address" />
+            <button type="submit" class="btn btn-primary">Join the club</button>
+          </form>
+          <p class="join-msg" id="join-msg" role="status" aria-live="polite"></p>
+          <p class="fine">Free to join. No spam — just runs, plans, and the occasional finish-line photo.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-brand">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon>
-          <circle cx="12" cy="12" r="3"></circle>
-        </svg>
-      </span>
-      Autohive
+  <footer>
+    <div class="wrap">
+      <a href="#" class="brand">
+        <span class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1a0f07" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l3-3 2 2 5-6"/></svg>
+        </span>
+        Stride
+      </a>
+      <p class="muted">&copy; <span id="year"></span> Stride Running Club. Keep moving.</p>
     </div>
-    <p>&copy; <span id="year"></span> Autohive. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // ── Pace calculator ──────────────────────────────────────
+    const $ = id => document.getElementById(id);
+    const KM_PER_MILE = 1.609344;
+
+    function fmtPace(secsPerUnit) {
+      if (!isFinite(secsPerUnit) || secsPerUnit <= 0) return '—';
+      const m = Math.floor(secsPerUnit / 60);
+      const s = Math.round(secsPerUnit % 60);
+      const ss = s === 60 ? '00' : String(s).padStart(2, '0');
+      return `${s === 60 ? m + 1 : m}:${ss}`;
+    }
+
+    function updatePace() {
+      const dist = parseFloat($('dist').value) || 0;
+      const unit = $('unit').value;
+      const totalSecs = (parseInt($('hh').value) || 0) * 3600
+                      + (parseInt($('mm').value) || 0) * 60
+                      + (parseInt($('ss').value) || 0);
+
+      if (dist <= 0 || totalSecs <= 0) {
+        $('pace-mi').textContent = '—';
+        $('pace-km').textContent = 'per mile · — per km';
+        return;
+      }
+      // normalize distance to miles and km
+      const miles = unit === 'mi' ? dist : dist / KM_PER_MILE;
+      const km = unit === 'km' ? dist : dist * KM_PER_MILE;
+
+      $('pace-mi').textContent = fmtPace(totalSecs / miles);
+      $('pace-km').textContent = `per mile · ${fmtPace(totalSecs / km)} per km`;
+    }
+
+    ['dist','unit','hh','mm','ss'].forEach(id => {
+      $(id).addEventListener('input', updatePace);
+      $(id).addEventListener('change', updatePace);
+    });
+    updatePace();
+
+    // ── Join form (demo mode) ───────────────────────────────
+    const form = document.getElementById('join-form');
+    const msg = document.getElementById('join-msg');
+    const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = $('email').value.trim();
+      if (!isEmail(email)) {
+        msg.textContent = 'Please enter a valid email address.';
+        msg.className = 'join-msg err';
+        return;
+      }
+      try {
+        const list = JSON.parse(localStorage.getItem('stride_members') || '[]');
+        if (!list.includes(email)) list.push(email);
+        localStorage.setItem('stride_members', JSON.stringify(list));
+      } catch (_) {}
+      msg.textContent = "🎉 You're in! Check your inbox for your first run.";
+      msg.className = 'join-msg ok';
+      form.reset();
+    });
+  </script>
 </body>
 </html>
