@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentPilot — Never lose a real estate lead to a slow reply again</title>
+  <meta name="description" content="AgentPilot is an AI assistant for real estate agents: it replies to every new lead in seconds, follows up until they book, schedules showings, and chases reviews — automatically. Book a free setup call." />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:title" content="AgentPilot — AI follow-up for real estate agents" />
+  <meta property="og:description" content="Reply to every lead in seconds, follow up automatically, and never let a deal go cold. Book a free setup call." />
+  <meta property="og:type" content="website" />
+
+  <meta name="theme-color" content="#0a0e1a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='%230a0e1a'/%3E%3Cpath d='M5 12 L12 5 L19 12 M7 11 V18 H17 V11' fill='none' stroke='url(%23g)' stroke-width='2' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <!-- Niche re-theme: trustworthy proptech blue/cyan over the base template -->
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --bg-soft: #0f1422;
+      --card: #141a2b;
+      --border: #232c42;
+      --brand: #3b82f6;
+      --brand-2: #22d3ee;
+      --accent: #7cc4ff;
+    }
+    .bg-glow { background: radial-gradient(circle, rgba(59,130,246,0.22) 0%, rgba(34,211,238,0.08) 40%, transparent 70%); }
+  </style>
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header class="nav">
+    <a href="#" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12 L12 4 L20 12"></path>
+          <path d="M6 11 V19 H18 V11"></path>
+          <path d="M10 19 V14 H14 V19"></path>
+        </svg>
+      </span>
+      AgentPilot
+    </a>
+    <nav class="nav-links">
+      <a href="#problem">Why it matters</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="nav-cta">Book a setup call</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="pill">🏡 Built for real estate agents &amp; teams</span>
+        <h1>Never lose a lead to a<br /><span class="grad">slow reply again.</span></h1>
+        <p class="sub">
+          AgentPilot is your AI assistant. It replies to every new lead in
+          <strong>under 60 seconds</strong>, follows up until they book, schedules
+          showings, and chases reviews — so you close more deals without living
+          in your inbox.
+        </p>
+        <form id="hero-form" class="hero-form" novalidate>
+          <input type="hidden" name="source" value="hero" />
+          <input type="email" name="email" placeholder="you@youragency.com" autocomplete="email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Book a free setup call →</button>
+        </form>
+        <p class="hero-msg" id="hero-msg" role="status" aria-live="polite"></p>
+        <div class="social-proof">
+          <div class="avatars" aria-hidden="true">
+            <span style="background:linear-gradient(135deg,#3b82f6,#22d3ee)"></span>
+            <span style="background:linear-gradient(135deg,#f97316,#fb7185)"></span>
+            <span style="background:linear-gradient(135deg,#22c55e,#06b6d4)"></span>
+            <span style="background:linear-gradient(135deg,#a855f7,#ec4899)"></span>
+          </div>
+          <p>Set up <strong>done-for-you</strong> in 3 days — no tech skills needed</p>
+        </div>
+      </div>
+
+      <!-- Product mockup -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mock">
+          <div class="mock-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="mock-title">AgentPilot · Live</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-row active">
+              <span class="mock-ico" style="background:rgba(59,130,246,.15)">⚡</span>
+              <div class="mock-text"><strong>New Zillow lead → replied in 14s</strong><span>“Hi Sarah, is the condo still available?”</span></div>
+              <span class="mock-status run"><i></i>Sent</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-ico" style="background:rgba(34,211,238,.15)">📅</span>
+              <div class="mock-text"><strong>Booked a showing</strong><span>Sat 2:00pm · added to your calendar</span></div>
+              <span class="mock-status done">Done</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-ico" style="background:rgba(124,196,255,.15)">🔁</span>
+              <div class="mock-text"><strong>Day-3 follow-up sent</strong><span>to 7 leads who went quiet</span></div>
+              <span class="mock-status done">Done</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-ico" style="background:rgba(34,197,94,.15)">⭐</span>
+              <div class="mock-text"><strong>Review request sent</strong><span>to closed buyer · the Martins</span></div>
+              <span class="mock-status done">Done</span>
+            </div>
+          </div>
+          <div class="mock-foot">
+            <span class="live-dot"></span> 12 leads handled today · avg reply 22s
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+      <div class="stat"><strong>&lt;60s</strong><span>reply to every new lead</span></div>
+      <div class="stat"><strong>24/7</strong><span>nights, weekends, open houses</span></div>
+      <div class="stat"><strong>5–8x</strong><span>more likely to connect when you reply fast*</span></div>
+      <div class="stat"><strong>3 days</strong><span>done-for-you setup</span></div>
+    </section>
+
+    <!-- The problem -->
+    <section id="problem" class="usecases">
+      <div class="section-head">
+        <h2>The leads are already coming in. They're going cold.</h2>
+        <p>The average agent takes hours to respond — and most online leads buy from whoever answers first. AgentPilot answers first, every time.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Instant lead response</h3>
+          <p>Every inquiry from Zillow, your site, Facebook, or a portal gets a personal reply in seconds — day or night.</p>
+          <span class="card-outcome">↳ Beat every other agent to the lead</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔁</div>
+          <h3>Follow-up that never quits</h3>
+          <p>Most deals are won on the 5th–8th touch. AgentPilot keeps following up with the right message until they reply or book.</p>
+          <span class="card-outcome">↳ No lead forgotten</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">📅</div>
+          <h3>Showings booked for you</h3>
+          <p>It qualifies the lead, offers your real availability, and drops the appointment straight onto your calendar.</p>
+          <span class="card-outcome">↳ Wake up to a full calendar</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">🗂️</div>
+          <h3>Your CRM, always updated</h3>
+          <p>Every conversation, status, and note synced automatically — no more end-of-day data entry.</p>
+          <span class="card-outcome">↳ Hours back each week</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">⭐</div>
+          <h3>More 5-star reviews</h3>
+          <p>After each close, it asks happy clients for a review at the perfect moment — the engine of referrals.</p>
+          <span class="card-outcome">↳ Grow your reputation on autopilot</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">🛟</div>
+          <h3>You stay in control</h3>
+          <p>Set the tone, approve what matters, and jump into any conversation. It hands off to you the moment it should.</p>
+          <span class="card-outcome">↳ AI speed, your judgment</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="how">
+      <div class="section-head">
+        <h2>Live in 3 days. Done for you.</h2>
+        <p>No software to learn. We set it up around how you already work.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Quick setup call</h3>
+          <p>We connect your lead sources, calendar, and CRM, and learn your voice. 30 minutes, that's it.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>We build your assistant</h3>
+          <p>We write your follow-up sequences and responses, and you approve them. Tweaks are free.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>It goes to work</h3>
+          <p>Every lead answered, every follow-up sent, every showing booked — while you're out selling.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compare -->
+    <section class="compare">
+      <div class="section-head">
+        <h2>Two agents, same lead</h2>
+        <p>The difference isn't talent. It's response time.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col old">
+          <h3>Without AgentPilot</h3>
+          <ul>
+            <li>Lead waits hours for a reply — and books with someone else</li>
+            <li>Follow-ups stop after one or two tries</li>
+            <li>Evenings and weekends = missed inquiries</li>
+            <li>Showings lost to phone tag</li>
+            <li>Reviews never asked for</li>
+          </ul>
+        </div>
+        <div class="compare-col new">
+          <h3>With AgentPilot</h3>
+          <ul>
+            <li>Replied in seconds — you're the first agent they hear from</li>
+            <li>Followed up until they book or say no</li>
+            <li>Captures leads 24/7, even mid-showing</li>
+            <li>Calendar fills itself</li>
+            <li>Reviews and referrals roll in automatically</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+      <div class="section-head">
+        <h2>Pricing</h2>
+        <p>One closed deal pays for it many times over. Setup included.</p>
+      </div>
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>Solo Agent</h3>
+          <p class="price-desc">For the individual agent who refuses to lose a lead.</p>
+          <div class="price"><span class="amt">€499</span><span class="per">setup</span></div>
+          <ul>
+            <li>Instant lead response + follow-up</li>
+            <li>Calendar booking</li>
+            <li>1 lead source connected</li>
+            <li>€149/mo after setup</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-ghost">Book a call</a>
+        </article>
+        <article class="price-card featured">
+          <span class="price-badge">Most popular</span>
+          <h3>Producer</h3>
+          <p class="price-desc">For busy agents who want the whole pipeline handled.</p>
+          <div class="price"><span class="amt">€1,500</span><span class="per">setup</span></div>
+          <ul>
+            <li>Everything in Solo Agent</li>
+            <li>All lead sources + CRM sync</li>
+            <li>Custom follow-up sequences</li>
+            <li>Review &amp; referral automation</li>
+            <li>€299/mo after setup</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-primary">Book a setup call</a>
+        </article>
+        <article class="price-card">
+          <h3>Team / Brokerage</h3>
+          <p class="price-desc">For teams routing leads across multiple agents.</p>
+          <div class="price"><span class="amt">Custom</span></div>
+          <ul>
+            <li>Smart lead routing across agents</li>
+            <li>Shared dashboard &amp; reporting</li>
+            <li>Onboarding for the whole team</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-ghost">Talk to us</a>
+        </article>
+      </div>
+      <p class="price-note">💙 Founding clients lock in <strong>setup at half price</strong>. Limited spots this quarter.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="section-head">
+        <h2>Questions, answered</h2>
+        <p>Everything you might be wondering before you book.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Do I have to learn new software?</summary>
+          <p>No. It works with the tools you already use — your email, calendar, and CRM. We set everything up for you and you keep working the way you do now.</p>
+        </details>
+        <details>
+          <summary>Will leads know it's AI?</summary>
+          <p>Messages go out in your voice and tone, and AgentPilot hands the conversation to you the moment a human touch is needed. You approve how it sounds before it goes live.</p>
+        </details>
+        <details>
+          <summary>Which lead sources does it work with?</summary>
+          <p>Zillow, Realtor.com, Facebook/Instagram lead forms, your website, and most portals and CRMs. On the setup call we connect whatever you use.</p>
+        </details>
+        <details>
+          <summary>What does it cost — really?</summary>
+          <p>A one-time setup plus a flat monthly fee (see pricing above). Most agents make it back with a single extra closed deal.</p>
+        </details>
+        <details>
+          <summary>How fast can I be live?</summary>
+          <p>Three business days from the setup call in most cases. Book a call and we'll give you an exact timeline.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="waitlist" class="waitlist">
+      <div class="waitlist-inner">
+        <h2>Stop losing deals to a slow reply.</h2>
+        <p>Book a free 20-minute setup call. We'll show you exactly how many leads you're leaving on the table — and how to fix it this week.</p>
+        <form id="waitlist-form" novalidate>
+          <input type="hidden" name="source" value="final-cta" />
+          <div class="form-row">
+            <input type="email" id="email" name="email" placeholder="you@youragency.com" autocomplete="email" required aria-label="Email address" />
+            <button type="submit" class="btn btn-primary">Book my free call</button>
+          </div>
+          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="waitlist-fine">No obligation. No tech skills needed. Just more closed deals.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 12 L12 4 L20 12"></path>
+          <path d="M6 11 V19 H18 V11"></path>
+        </svg>
+      </span>
+      AgentPilot
+    </div>
+    <p>&copy; <span id="year"></span> AgentPilot. AI follow-up for real estate. *Faster response dramatically increases lead contact rates (industry studies).</p>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

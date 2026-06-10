@@ -11,6 +11,12 @@ This repo contains the marketing landing page with a waitlist signup.
 > ready-made listing, realistic pricing, and where to sell it. Preview
 > images live in [`screenshots/`](screenshots/).
 
+> **Want to earn from it as a service?** [`realestate/`](realestate/) is a
+> ready niche landing page (**AgentPilot** — AI lead follow-up for real estate
+> agents). Pair it with **[`SERVICE-OFFER.md`](SERVICE-OFFER.md)** (what you
+> sell + pricing) and **[`OUTREACH.md`](OUTREACH.md)** (templates to book
+> clients).
+
 ## Stack
 
 Pure static site — no build step, no dependencies.
