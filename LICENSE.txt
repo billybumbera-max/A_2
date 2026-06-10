@@ -1,0 +1,26 @@
+AI Automation Agency Starter Kit — Commercial License
+
+Copyright (c) 2026
+
+Permission is granted to the purchaser/owner of this kit to use, modify, and
+deploy the included templates, documents, and code for:
+
+  - Their own business and marketing.
+  - Unlimited client projects ("done-for-you" work delivered to clients).
+
+You MAY:
+  - Rebrand, edit, and deploy the landing pages and assets.
+  - Use the strategy, offer, and outreach documents in your own business.
+  - Deliver customized versions to your clients as part of paid work.
+
+You MAY NOT:
+  - Resell or redistribute this kit as-is (or substantially unchanged) as a
+    competing template/kit product.
+  - Claim authorship of the original kit itself.
+
+THE SOFTWARE AND MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM,
+DAMAGES, OR OTHER LIABILITY ARISING FROM THE USE OF THESE MATERIALS.
+
+This is a license template, not legal advice. Adjust terms to fit how you
+intend to sell or use the kit.
