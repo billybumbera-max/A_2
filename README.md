@@ -6,6 +6,11 @@ higher-value work.
 
 This repo contains the marketing landing page with a waitlist signup.
 
+> **Reusing / selling this template?** See **[`CUSTOMIZE.md`](CUSTOMIZE.md)**
+> to rebrand it in minutes, and **[`SALES-KIT.md`](SALES-KIT.md)** for a
+> ready-made listing, realistic pricing, and where to sell it. Preview
+> images live in [`screenshots/`](screenshots/).
+
 ## Stack
 
 Pure static site — no build step, no dependencies.
