@@ -32,22 +32,26 @@ python3 -m http.server 8000
 
 ## Connect the waitlist (collect real emails)
 
-The form works as a local demo out of the box. To capture real signups:
+The form works as a local demo out of the box. To capture real signups,
+set **one value** — `WAITLIST.ENDPOINT` at the top of `script.js`:
 
 1. Create a free form at **https://formspree.io** (50 submissions/mo free).
 2. Copy your form ID (looks like `xayzwbpq`).
-3. In `index.html`, replace **both** occurrences of `YOUR_FORM_ID`
-   (the hero form and the final waitlist form):
+3. In `script.js`, set the endpoint:
 
-   ```html
-   action="https://formspree.io/f/YOUR_FORM_ID"
+   ```js
+   const WAITLIST = {
+     ENDPOINT: 'https://formspree.io/f/xayzwbpq',
+   };
    ```
 
-4. Done — submissions now arrive in your Formspree dashboard / email.
+4. Done — both forms (hero + final CTA) now post real signups to your
+   Formspree dashboard / email.
 
-> Other options: Google Forms, Mailchimp, ConvertKit, or a custom backend.
-> The form posts standard `multipart/form-data` with an `email` field, so it
-> works with most form services by swapping the `action` URL.
+> Other options: Google Apps Script (→ Google Sheet), Netlify Forms,
+> Mailchimp, ConvertKit, or a custom backend. The form POSTs standard
+> `multipart/form-data` with an `email` field, so any endpoint that
+> accepts that works — just paste its URL as `ENDPOINT`.
 
 ## Customize
 

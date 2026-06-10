@@ -1,3 +1,18 @@
+// ─────────────────────────────────────────────────────────────
+//  WAITLIST CONFIG — connect real signups by setting ONE value.
+//
+//  Paste your Formspree endpoint below (free at https://formspree.io):
+//    1. Create a form, copy its ID (looks like "xayzwbpq").
+//    2. Set:  ENDPOINT: 'https://formspree.io/f/xayzwbpq'
+//
+//  Leave it as '' to run in demo mode (signups saved in the browser).
+//  Any endpoint that accepts a POST with an `email` field works
+//  (Formspree, Google Apps Script, Netlify, your own backend, etc).
+// ─────────────────────────────────────────────────────────────
+const WAITLIST = {
+  ENDPOINT: '', // e.g. 'https://formspree.io/f/xayzwbpq'
+};
+
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -22,7 +37,8 @@ function initForm(formId, msgId) {
 
   const input = form.querySelector('input[type="email"]');
   const btn = form.querySelector('button[type="submit"]');
-  const formspreeReady = !form.action.includes('YOUR_FORM_ID');
+  const endpoint = WAITLIST.ENDPOINT && WAITLIST.ENDPOINT.trim();
+  const live = Boolean(endpoint);
 
   function setMsg(text, type) {
     msg.textContent = text;
@@ -50,8 +66,8 @@ function initForm(formId, msgId) {
       btn.textContent = originalLabel;
     };
 
-    // Demo mode: no Formspree endpoint configured yet.
-    if (!formspreeReady) {
+    // Demo mode: no endpoint configured yet.
+    if (!live) {
       setTimeout(function () {
         finish("🎉 You're on the list! We'll be in touch soon.", 'success');
         form.reset();
@@ -60,7 +76,7 @@ function initForm(formId, msgId) {
     }
 
     try {
-      const res = await fetch(form.action, {
+      const res = await fetch(endpoint, {
         method: 'POST',
         body: new FormData(form),
         headers: { Accept: 'application/json' },
