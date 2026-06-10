@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autohive — AI agents that automate your busywork</title>
+  <meta name="description" content="Autohive deploys AI agents that run your repetitive work end-to-end — inbox triage, data entry, reporting, follow-ups. Save 10+ hours a week. Join the waitlist for early-access pricing." />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:title" content="Autohive — Put your busywork on autopilot" />
+  <meta property="og:description" content="AI agents that run your repetitive work end-to-end. Save 10+ hours a week. Join the waitlist." />
+  <meta property="og:type" content="website" />
+
+  <meta name="theme-color" content="#0a0b14" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%2321d4fd'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' fill='%230a0b14'/%3E%3Cg fill='none' stroke='url(%23g)' stroke-width='2' stroke-linejoin='round'%3E%3Cpolygon points='12 3 19 7 19 17 12 21 5 17 5 7 12 3'/%3E%3Ccircle cx='12' cy='12' r='2.5'/%3E%3C/g%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+:root {
+  --bg: #0a0b14;
+  --bg-soft: #11131f;
+  --card: #161824;
+  --border: #242838;
+  --text: #eef0f7;
+  --muted: #9aa0b5;
+  --brand: #7c5cff;
+  --brand-2: #21d4fd;
+  --accent: #b794ff;
+  --green: #4ade80;
+  --radius: 16px;
+  --max: 1140px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.bg-glow {
+  position: fixed;
+  top: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.22) 0%, rgba(33, 212, 253, 0.08) 40%, transparent 70%);
+  filter: blur(20px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+a { color: inherit; text-decoration: none; }
+section { padding: 0 24px; }
+
+/* Nav */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+.brand-mark {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: #fff;
+}
+.nav-links { display: flex; align-items: center; gap: 26px; }
+.nav-links a { color: var(--muted); font-weight: 500; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  color: var(--text) !important;
+  border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.nav-cta:hover { border-color: var(--brand); background: rgba(124, 92, 255, 0.1); }
+
+/* Hero */
+.hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+  padding-top: 56px;
+  padding-bottom: 72px;
+}
+.pill {
+  display: inline-block;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--accent);
+  background: rgba(124, 92, 255, 0.12);
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  padding: 6px 14px; border-radius: 999px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.9rem);
+  line-height: 1.05; letter-spacing: -0.03em; font-weight: 900;
+}
+.grad {
+  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.sub { font-size: 1.18rem; color: var(--muted); max-width: 540px; margin: 22px 0 0; }
+.sub strong { color: var(--text); }
+
+.hero-form { display: flex; gap: 10px; margin-top: 30px; max-width: 480px; }
+.hero-form input {
+  flex: 1; background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px 18px; color: var(--text);
+  font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+}
+.hero-form input:focus { outline: none; border-color: var(--brand); }
+.hero-form input::placeholder { color: #5d627a; }
+.hero-msg { min-height: 1.2em; margin-top: 12px; font-weight: 500; font-size: 0.95rem; }
+.hero-msg.success { color: var(--green); }
+.hero-msg.error { color: #f87171; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 1rem; padding: 14px 24px;
+  border-radius: 12px; border: 1px solid transparent; cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.15s, box-shadow 0.2s, background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+  color: #fff; box-shadow: 0 8px 24px rgba(124, 92, 255, 0.3);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(124, 92, 255, 0.42); }
+.btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.03); }
+
+/* Social proof */
+.social-proof { display: flex; align-items: center; gap: 12px; margin-top: 28px; }
+.avatars { display: flex; }
+.avatars span { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--bg); margin-left: -8px; }
+.avatars span:first-child { margin-left: 0; }
+.social-proof p { color: var(--muted); font-size: 0.92rem; }
+.social-proof strong { color: var(--text); }
+
+/* Hero mockup */
+.hero-visual { perspective: 1600px; }
+.mock {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transform: rotateY(-9deg) rotateX(4deg);
+  animation: float 7s ease-in-out infinite;
+}
+@keyframes float { 0%,100% { transform: rotateY(-9deg) rotateX(4deg) translateY(0); } 50% { transform: rotateY(-9deg) rotateX(4deg) translateY(-10px); } }
+.mock-bar { display: flex; align-items: center; gap: 7px; padding: 14px 16px; border-bottom: 1px solid var(--border); }
+.dot { width: 11px; height: 11px; border-radius: 50%; }
+.dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+.mock-title { margin-left: 10px; font-size: 0.82rem; color: var(--muted); font-weight: 500; }
+.mock-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.mock-row {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px 14px;
+}
+.mock-row.active { border-color: rgba(168, 85, 247, 0.5); box-shadow: 0 0 0 3px rgba(168,85,247,0.08); }
+.mock-ico { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font-size: 1.1rem; flex-shrink: 0; }
+.mock-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.mock-text strong { font-size: 0.92rem; font-weight: 600; }
+.mock-text span { font-size: 0.78rem; color: var(--muted); }
+.mock-status { font-size: 0.74rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
+.mock-status.done { color: var(--green); background: rgba(74, 222, 128, 0.12); }
+.mock-status.run { color: var(--accent); background: rgba(168, 85, 247, 0.14); }
+.mock-status.run i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 1.2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.mock-foot { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 1.6s infinite; }
+
+/* Stats band */
+.stats {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  padding: 8px 24px 64px; text-align: center;
+}
+.stat strong { display: block; font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;
+  background: linear-gradient(120deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.stat span { color: var(--muted); font-size: 0.9rem; }
+
+/* Trust */
+.trust { max-width: var(--max); margin: 0 auto; text-align: center; padding: 8px 24px 72px; }
+.trust p { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+.trust-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 36px; opacity: 0.6; font-weight: 600; font-size: 1.1rem; }
+
+/* Section heads */
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.section-head h2 { font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.02em; font-weight: 800; }
+.section-head p { color: var(--muted); font-size: 1.15rem; margin-top: 14px; }
+
+/* Use cases / features */
+.usecases { max-width: var(--max); margin: 0 auto; padding-top: 40px; padding-bottom: 88px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(124, 92, 255, 0.5); }
+.card-icon { font-size: 1.6rem; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 12px; background: rgba(124, 92, 255, 0.12); margin-bottom: 18px; }
+.card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.card p { color: var(--muted); }
+.card-outcome { display: inline-block; margin-top: 14px; font-size: 0.85rem; font-weight: 600; color: var(--green); }
+
+/* How it works */
+.how { max-width: var(--max); margin: 0 auto; padding-top: 56px; padding-bottom: 88px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.step { position: relative; padding: 28px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius); }
+.step-num { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; font-weight: 800; font-size: 1.1rem; margin-bottom: 18px; }
+.step h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.step p { color: var(--muted); }
+
+/* Compare */
+.compare { max-width: var(--max); margin: 0 auto; padding-top: 56px; padding-bottom: 88px; }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.compare-col { border-radius: var(--radius); padding: 32px; border: 1px solid var(--border); }
+.compare-col.old { background: var(--bg-soft); }
+.compare-col.new { background: linear-gradient(160deg, rgba(124, 92, 255, 0.14), rgba(33, 212, 253, 0.05)); border-color: rgba(124, 92, 255, 0.4); }
+.compare-col h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.compare-col.old h3 { color: var(--muted); }
+.compare-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.compare-col li { padding-left: 30px; position: relative; color: var(--muted); }
+.compare-col.old li::before { content: '✕'; position: absolute; left: 0; color: #f87171; font-weight: 700; }
+.compare-col.new li { color: var(--text); }
+.compare-col.new li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.brand-mark.sm { width: 26px; height: 26px; border-radius: 8px; }
+
+/* Pricing */
+.pricing { max-width: var(--max); margin: 0 auto; padding-top: 56px; padding-bottom: 64px; }
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.price-card { position: relative; background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px 28px; }
+.price-card.featured { border-color: var(--brand); box-shadow: 0 20px 50px rgba(124, 92, 255, 0.2); transform: translateY(-8px); }
+.price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(120deg, var(--brand), var(--brand-2)); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 5px 14px; border-radius: 999px; }
+.price-card h3 { font-size: 1.3rem; font-weight: 800; }
+.price-desc { color: var(--muted); font-size: 0.92rem; margin-top: 6px; min-height: 2.8em; }
+.price { margin: 18px 0; }
+.price .amt { font-size: 2.6rem; font-weight: 900; letter-spacing: -0.02em; }
+.price .per { color: var(--muted); font-weight: 500; }
+.price-card ul { list-style: none; margin: 0 0 26px; display: flex; flex-direction: column; gap: 11px; }
+.price-card li { color: var(--muted); padding-left: 26px; position: relative; }
+.price-card li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+.price-card .btn { width: 100%; }
+.price-note { text-align: center; color: var(--muted); margin-top: 36px; font-size: 0.95rem; }
+.price-note strong { color: var(--text); }
+
+/* FAQ */
+.faq { max-width: 760px; margin: 0 auto; padding-top: 56px; padding-bottom: 88px; }
+.faq-list { display: flex; flex-direction: column; gap: 14px; }
+.faq details { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 4px 22px; transition: border-color 0.2s; }
+.faq details[open] { border-color: rgba(124, 92, 255, 0.5); }
+.faq summary { list-style: none; cursor: pointer; font-weight: 600; font-size: 1.08rem; padding: 18px 0; display: flex; align-items: center; justify-content: space-between; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; line-height: 1; transition: transform 0.2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--muted); padding: 0 0 20px; }
+
+/* Waitlist */
+.waitlist { max-width: var(--max); margin: 0 auto; padding-top: 40px; padding-bottom: 100px; }
+.waitlist-inner {
+  background: linear-gradient(160deg, rgba(124, 92, 255, 0.16), rgba(33, 212, 253, 0.06));
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  border-radius: 24px; padding: 64px 32px; text-align: center;
+}
+.waitlist-inner h2 { font-size: clamp(2rem, 4vw, 2.9rem); letter-spacing: -0.02em; font-weight: 900; }
+.waitlist-inner > p { color: var(--muted); font-size: 1.15rem; max-width: 520px; margin: 14px auto 0; }
+#waitlist-form { max-width: 520px; margin: 36px auto 0; }
+.form-row { display: flex; gap: 12px; }
+#waitlist-form input {
+  flex: 1; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px 18px; color: var(--text);
+  font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+}
+#waitlist-form input:focus { outline: none; border-color: var(--brand); }
+#waitlist-form input::placeholder { color: #5d627a; }
+.form-msg { min-height: 1.2em; margin-top: 14px; font-weight: 500; }
+.form-msg.success { color: var(--green); }
+.form-msg.error { color: #f87171; }
+.waitlist-fine { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+/* Footer */
+.footer {
+  max-width: var(--max); margin: 0 auto; padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.footer p { color: var(--muted); font-size: 0.9rem; }
+
+/* Responsive */
+@media (max-width: 940px) {
+  .hero { grid-template-columns: 1fr; padding-top: 40px; }
+  .hero-visual { max-width: 480px; margin: 8px auto 0; }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+  .grid, .steps, .compare-grid, .price-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+}
+@media (max-width: 620px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero-form, .form-row { flex-direction: column; }
+  .waitlist-inner { padding: 48px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mock { animation: none; }
+  .mock-status.run i, .live-dot { animation: none; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- Nav -->
+  <header class="nav">
+    <a href="#" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </span>
+      Autohive
+    </a>
+    <nav class="nav-links">
+      <a href="#usecases">Use cases</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="nav-cta">Join waitlist</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="pill">⚡ Early access open — limited spots</span>
+        <h1>Your team's busywork,<br /><span class="grad">done by AI agents.</span></h1>
+        <p class="sub">
+          Autohive deploys AI agents that run your repetitive work end-to-end —
+          inbox triage, data entry, reporting, follow-ups. Set it up in an afternoon
+          and win back <strong>10+ hours a week</strong>.
+        </p>
+        <form id="hero-form" class="hero-form" action="https://docs.google.com/forms/d/e/PASTE_FORM_ID/formResponse" method="POST" novalidate>
+          <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Get early access →</button>
+        </form>
+        <p class="hero-msg" id="hero-msg" role="status" aria-live="polite"></p>
+        <div class="social-proof">
+          <div class="avatars" aria-hidden="true">
+            <span style="background:linear-gradient(135deg,#7c5cff,#21d4fd)"></span>
+            <span style="background:linear-gradient(135deg,#f97316,#fb7185)"></span>
+            <span style="background:linear-gradient(135deg,#22c55e,#06b6d4)"></span>
+            <span style="background:linear-gradient(135deg,#a855f7,#ec4899)"></span>
+          </div>
+          <p>Join the <strong>founding cohort</strong> — early access opening soon</p>
+        </div>
+      </div>
+
+      <!-- Product mockup -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mock">
+          <div class="mock-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="mock-title">Autohive · Live</span>
+          </div>
+          <div class="mock-body">
+            <div class="mock-row">
+              <span class="mock-ico" style="background:rgba(124,92,255,.15)">📨</span>
+              <div class="mock-text"><strong>Triaged 38 support emails</strong><span>routed · drafted replies</span></div>
+              <span class="mock-status done">Done</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-ico" style="background:rgba(33,212,253,.15)">📊</span>
+              <div class="mock-text"><strong>Built weekly sales report</strong><span>from Sheets + CRM</span></div>
+              <span class="mock-status done">Done</span>
+            </div>
+            <div class="mock-row active">
+              <span class="mock-ico" style="background:rgba(168,85,247,.15)">🔁</span>
+              <div class="mock-text"><strong>Sending 12 follow-ups</strong><span>working now…</span></div>
+              <span class="mock-status run"><i></i>Running</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-ico" style="background:rgba(34,197,94,.15)">🗂️</span>
+              <div class="mock-text"><strong>Updated 204 CRM records</strong><span>deduped · enriched</span></div>
+              <span class="mock-status done">Done</span>
+            </div>
+          </div>
+          <div class="mock-foot">
+            <span class="live-dot"></span> 4 agents active · 9.4 hrs saved today
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capability band -->
+    <section class="stats">
+      <div class="stat"><strong>24/7</strong><span>agents that never clock out</span></div>
+      <div class="stat"><strong>No code</strong><span>set up in plain English</span></div>
+      <div class="stat"><strong>Minutes</strong><span>from idea to running agent</span></div>
+      <div class="stat"><strong>You're in control</strong><span>guardrails &amp; approvals</span></div>
+    </section>
+
+    <!-- Trust strip -->
+    <section class="trust">
+      <p>Works with the tools your team already runs on</p>
+      <div class="trust-logos">
+        <span>Gmail</span><span>Slack</span><span>Notion</span><span>Salesforce</span><span>Sheets</span><span>HubSpot</span><span>Zapier</span>
+      </div>
+    </section>
+
+    <!-- Use cases -->
+    <section id="usecases" class="usecases">
+      <div class="section-head">
+        <h2>What you'll never do manually again</h2>
+        <p>Point Autohive at the work that drains your week. It handles the rest.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">📨</div>
+          <h3>Inbox &amp; ticket triage</h3>
+          <p>Agents read, categorize, draft replies, and route requests to the right person — around the clock.</p>
+          <span class="card-outcome">↳ Save ~6 hrs/week</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">📊</div>
+          <h3>Reporting on autopilot</h3>
+          <p>Pull from your spreadsheets and tools, then generate clean summaries and dashboards on schedule.</p>
+          <span class="card-outcome">↳ Reports in seconds</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">🗂️</div>
+          <h3>Data entry &amp; cleanup</h3>
+          <p>Dedupe, enrich, and sync records across your CRM and databases. No more copy-paste.</p>
+          <span class="card-outcome">↳ 99% fewer errors</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">🔁</div>
+          <h3>Follow-ups that never slip</h3>
+          <p>Automatically chase leads, invoices, and replies with context-aware messages.</p>
+          <span class="card-outcome">↳ Nothing falls through</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">🧠</div>
+          <h3>Research &amp; summaries</h3>
+          <p>Monitor sources, gather what matters, and deliver briefings straight to your inbox or Slack.</p>
+          <span class="card-outcome">↳ Stay ahead, effortlessly</span>
+        </article>
+        <article class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>Your custom workflow</h3>
+          <p>Describe any repetitive process in plain English. Autohive builds and runs the agent for you.</p>
+          <span class="card-outcome">↳ Built in minutes</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="how">
+      <div class="section-head">
+        <h2>Up and running in an afternoon</h2>
+        <p>No engineers, no glue code, no maintenance.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Connect your tools</h3>
+          <p>Link your email, docs, and apps in a few clicks. Secure OAuth — we never store passwords.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Describe the task</h3>
+          <p>Tell Autohive what you want done in plain English. It builds the workflow for you.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Let the hive run</h3>
+          <p>Agents work in the background with your guardrails. Review, approve, watch busywork vanish.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The old way vs Autohive -->
+    <section class="compare">
+      <div class="section-head">
+        <h2>There's a better way to work</h2>
+        <p>Stop trading your hours for tasks a machine should handle.</p>
+      </div>
+      <div class="compare-grid">
+        <div class="compare-col old">
+          <h3>The manual way</h3>
+          <ul>
+            <li>Hours lost to repetitive copy-paste</li>
+            <li>Reports built by hand, late on Friday</li>
+            <li>Follow-ups forgotten, leads gone cold</li>
+            <li>Work stops the moment you log off</li>
+            <li>Hiring just to keep up with volume</li>
+          </ul>
+        </div>
+        <div class="compare-col new">
+          <h3><span class="brand-mark sm" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon><circle cx="12" cy="12" r="3"></circle></svg></span> With Autohive</h3>
+          <ul>
+            <li>Agents handle the busywork end-to-end</li>
+            <li>Reports delivered on schedule, automatically</li>
+            <li>Every follow-up sent, with context</li>
+            <li>Work continues around the clock</li>
+            <li>Scale output without scaling headcount</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing teaser -->
+    <section id="pricing" class="pricing">
+      <div class="section-head">
+        <h2>Early-access pricing</h2>
+        <p>Join the waitlist now and lock in founding-member rates for life.</p>
+      </div>
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>Starter</h3>
+          <p class="price-desc">For individuals automating their own work.</p>
+          <div class="price"><span class="amt">$29</span><span class="per">/mo</span></div>
+          <ul>
+            <li>1 active agent</li>
+            <li>Core integrations</li>
+            <li>Up to 500 tasks/mo</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-ghost">Join waitlist</a>
+        </article>
+        <article class="price-card featured">
+          <span class="price-badge">Most popular</span>
+          <h3>Team</h3>
+          <p class="price-desc">For teams putting whole workflows on autopilot.</p>
+          <div class="price"><span class="amt">$99</span><span class="per">/mo</span></div>
+          <ul>
+            <li>Up to 10 active agents</li>
+            <li>All integrations</li>
+            <li>Up to 10,000 tasks/mo</li>
+            <li>Approval workflows &amp; guardrails</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-primary">Get early access</a>
+        </article>
+        <article class="price-card">
+          <h3>Enterprise</h3>
+          <p class="price-desc">For organizations scaling a hive of agents.</p>
+          <div class="price"><span class="amt">Custom</span></div>
+          <ul>
+            <li>Unlimited agents</li>
+            <li>SSO &amp; advanced security</li>
+            <li>Dedicated onboarding</li>
+            <li>SLA &amp; account manager</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-ghost">Talk to us</a>
+        </article>
+      </div>
+      <p class="price-note">💛 Waitlist members get <strong>50% off for the first year</strong>. Final pricing confirmed before launch.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+      <div class="section-head">
+        <h2>Questions, answered</h2>
+        <p>Everything you might be wondering before you join.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>What does Autohive actually do?</summary>
+          <p>Autohive runs AI agents that take over repetitive work — triaging your inbox, entering data, generating reports, sending follow-ups — by understanding context and acting across the tools you already use.</p>
+        </details>
+        <details>
+          <summary>Do I need to be technical to use it?</summary>
+          <p>No. You connect your tools with a few clicks and describe what you want done in plain English. Autohive builds and runs the workflow for you.</p>
+        </details>
+        <details>
+          <summary>Is my data secure?</summary>
+          <p>Yes. We connect via secure OAuth and never store your passwords. You set guardrails and approval steps, so a human stays in control of anything sensitive.</p>
+        </details>
+        <details>
+          <summary>What does it cost?</summary>
+          <p>Plans start at $29/mo, and waitlist members lock in 50% off their first year. See the pricing section above for details.</p>
+        </details>
+        <details>
+          <summary>When does it launch?</summary>
+          <p>We're onboarding early-access teams now. Join the waitlist and we'll reach out as spots open up.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Final CTA / Waitlist -->
+    <section id="waitlist" class="waitlist">
+      <div class="waitlist-inner">
+        <h2>Win back your week.</h2>
+        <p>Join the waitlist for early access and founding-member pricing. Takes 10 seconds.</p>
+        <!--
+          To collect real emails: connect a free Google Form and paste your
+          two form values into the WAITLIST config in the <script> block at
+          the bottom of this file. Until then, submissions are saved locally
+          in the browser for demo purposes.
+        -->
+        <form id="waitlist-form" action="https://docs.google.com/forms/d/e/PASTE_FORM_ID/formResponse" method="POST" novalidate>
+          <div class="form-row">
+            <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address" />
+            <button type="submit" class="btn btn-primary">Get early access</button>
+          </div>
+          <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+        </form>
+        <p class="waitlist-fine">No credit card. No spam — just a heads up when it's your turn.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2"></polygon>
+          <circle cx="12" cy="12" r="3"></circle>
+        </svg>
+      </span>
+      Autohive
+    </div>
+    <p>&copy; <span id="year"></span> Autohive. All rights reserved.</p>
+  </footer>
+
+  <script>
+// Footer year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// ── Waitlist destination ──────────────────────────────────────────────────
+// Signups post into a Google Form, which collects them in a Google Sheet you
+// own (free, unlimited). Paste two values from your form below — see the
+// README ("Connect the waitlist") for the 2-minute setup. Until both are
+// filled in, the form runs in demo mode (saves signups locally in the browser).
+const WAITLIST = {
+  // The Google Form's submit endpoint. From your form's pre-filled link it
+  // looks like: https://docs.google.com/forms/d/e/XXXX/viewform — swap the
+  // trailing "viewform" for "formResponse".
+  formAction: 'https://docs.google.com/forms/d/e/PASTE_FORM_ID/formResponse',
+  // The email question's field name, e.g. 'entry.1234567890'.
+  emailEntry: 'entry.PASTE_ENTRY_ID',
+};
+
+function waitlistReady() {
+  return !WAITLIST.formAction.includes('PASTE_FORM_ID')
+      && !WAITLIST.emailEntry.includes('PASTE_ENTRY_ID');
+}
+
+// Keep a local backup copy of every signup so nothing is ever lost.
+function saveLocal(email) {
+  try {
+    const list = JSON.parse(localStorage.getItem('autohive_waitlist') || '[]');
+    if (!list.includes(email)) list.push(email);
+    localStorage.setItem('autohive_waitlist', JSON.stringify(list));
+  } catch (_) { /* ignore storage errors */ }
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+// Wire up any waitlist form on the page (hero + final CTA).
+function initForm(formId, msgId) {
+  const form = document.getElementById(formId);
+  const msg = document.getElementById(msgId);
+  if (!form || !msg) return;
+
+  const input = form.querySelector('input[type="email"]');
+  const btn = form.querySelector('button[type="submit"]');
+
+  function setMsg(text, type) {
+    msg.textContent = text;
+    msg.className = msg.className.replace(/\b(success|error)\b/g, '').trim() + (type ? ' ' + type : '');
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const email = input.value.trim();
+
+    if (!isValidEmail(email)) {
+      setMsg('Please enter a valid email address.', 'error');
+      input.focus();
+      return;
+    }
+
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Joining…';
+    saveLocal(email);
+
+    const finish = function (text, type) {
+      setMsg(text, type);
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    };
+
+    // Demo mode: no Google Form connected yet.
+    if (!waitlistReady()) {
+      setTimeout(function () {
+        finish("🎉 You're on the list! We'll be in touch soon.", 'success');
+        form.reset();
+      }, 500);
+      return;
+    }
+
+    // Post into the Google Form. It doesn't send CORS headers, so we use
+    // mode:'no-cors' — the response is opaque (we can't read it), but the
+    // submission goes through and lands in your Sheet.
+    try {
+      const body = new URLSearchParams();
+      body.append(WAITLIST.emailEntry, email);
+      await fetch(WAITLIST.formAction, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: body,
+      });
+      finish("🎉 You're on the list! We'll be in touch soon.", 'success');
+      form.reset();
+    } catch (_) {
+      finish('Network error. Please try again.', 'error');
+    }
+  });
+}
+
+initForm('hero-form', 'hero-msg');
+initForm('waitlist-form', 'form-msg');
+
+  </script>
+</body>
+</html>
