@@ -33,7 +33,13 @@ python3 -m http.server 8000
 ## Connect the waitlist (collect real emails)
 
 The form works as a local demo out of the box. To capture real signups,
-set **one value** — `WAITLIST.ENDPOINT` at the top of `script.js`:
+set **one value** — `WAITLIST.ENDPOINT` at the top of `script.js`.
+
+**Recommended: Google Sheet** — signups land in a sheet you own, free, no
+row limits. Follow **[`SETUP-GOOGLE-SHEET.md`](SETUP-GOOGLE-SHEET.md)** (uses
+`google-apps-script.gs`), then set the Web App URL as `ENDPOINT`.
+
+**Or use Formspree** (fastest if you don't want a sheet):
 
 1. Create a free form at **https://formspree.io** (50 submissions/mo free).
 2. Copy your form ID (looks like `xayzwbpq`).

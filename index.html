@@ -54,6 +54,7 @@
           and win back <strong>10+ hours a week</strong>.
         </p>
         <form id="hero-form" class="hero-form" novalidate>
+          <input type="hidden" name="source" value="hero" />
           <input type="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address" />
           <button type="submit" class="btn btn-primary">Get early access →</button>
         </form>
@@ -312,6 +313,7 @@
           are saved locally in the browser for demo purposes.
         -->
         <form id="waitlist-form" novalidate>
+          <input type="hidden" name="source" value="final-cta" />
           <div class="form-row">
             <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required aria-label="Email address" />
             <button type="submit" class="btn btn-primary">Get early access</button>

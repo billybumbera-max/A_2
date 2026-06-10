@@ -75,6 +75,20 @@ function initForm(formId, msgId) {
       return;
     }
 
+    // Google Apps Script web apps don't return CORS headers, so the
+    // browser can't read the response. We send the data (it's still
+    // saved to the sheet) and treat the request as fire-and-forget.
+    if (endpoint.includes('script.google.com')) {
+      try {
+        await fetch(endpoint, { method: 'POST', mode: 'no-cors', body: new FormData(form) });
+        finish("🎉 You're on the list! We'll be in touch soon.", 'success');
+        form.reset();
+      } catch (_) {
+        finish('Network error. Please try again.', 'error');
+      }
+      return;
+    }
+
     try {
       const res = await fetch(endpoint, {
         method: 'POST',
