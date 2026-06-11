@@ -4,9 +4,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // Store signups locally so the demo "works" before a backend is connected.
 function saveLocal(email) {
   try {
-    const list = JSON.parse(localStorage.getItem('autohive_waitlist') || '[]');
+    const list = JSON.parse(localStorage.getItem('keystone_waitlist') || '[]');
     if (!list.includes(email)) list.push(email);
-    localStorage.setItem('autohive_waitlist', JSON.stringify(list));
+    localStorage.setItem('keystone_waitlist', JSON.stringify(list));
   } catch (_) { /* ignore storage errors */ }
 }
 
