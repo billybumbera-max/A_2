@@ -1,18 +1,19 @@
-# Autohive — Landing Page
+# Keystone — Landing Page
 
-**Autohive** is an AI automation service: deploy AI agents that handle repetitive
-busywork (inbox triage, data entry, reporting, follow-ups) so teams can focus on
-higher-value work.
+**Keystone** is a modern real estate brokerage: expert local agents paired with
+smart home-search tech. Sellers list for a low flat fee (instead of ~6%
+commission), buyers get a 1% cash rebate at closing, and everyone gets a
+dedicated agent and a smoother close.
 
-This repo contains the marketing landing page with a waitlist signup.
+This repo contains the marketing landing page with an early-access signup.
 
 ## Stack
 
 Pure static site — no build step, no dependencies.
 
 - `index.html` — page structure & content
-- `styles.css` — styling (dark, modern SaaS theme, fully responsive)
-- `script.js` — waitlist form handling & validation
+- `styles.css` — styling (dark, modern theme, fully responsive)
+- `script.js` — signup form handling & validation
 
 ## Run locally
 
@@ -30,7 +31,7 @@ python3 -m http.server 8000
 3. Source: **Deploy from a branch**, branch: `main`, folder: `/ (root)`.
 4. Your site goes live at `https://<username>.github.io/<repo>/`.
 
-## Connect the waitlist (collect real emails)
+## Connect the signup form (collect real emails)
 
 The form works as a local demo out of the box. To capture real signups:
 
@@ -53,4 +54,9 @@ The form works as a local demo out of the box. To capture real signups:
 
 - **Name / copy:** edit text in `index.html`.
 - **Colors:** tweak the CSS variables at the top of `styles.css` (`--brand`, `--brand-2`).
-- **Integrations shown:** update the `.trust-logos` list in `index.html`.
+- **Listing portals shown:** update the `.trust-logos` list in `index.html`.
+- **Pricing:** edit the `.price-grid` cards in `index.html`.
+
+> Marketing copy only — figures shown (savings, rebate, timelines) are
+> illustrative placeholders. Confirm real numbers and add the required
+> licensing/brokerage disclosures before going live.
